@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- configuration of login -->
+	<package name="login" extends="struts-default">
+		<action name="loginaction" class="com.action.loginAction">
+			<result name="success">main.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="cancel" type="redirectAction">Welcome</result>
+		</action>
+	<!-- use action jump back to welcome page -->
+		<action name="Welcome" class="com.action.welcome">
+			<result name="cancel">Welcome.jsp</result>
+		</action>
+	</package>
+</struts>    
