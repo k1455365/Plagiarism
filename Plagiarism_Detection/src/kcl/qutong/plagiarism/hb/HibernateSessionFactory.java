@@ -8,6 +8,11 @@ import org.hibernate.cfg.Configuration;
  * Configures and provides access to Hibernate sessions, tied to the
  * current thread of execution.  Follows the Thread Local Session
  * pattern, see {@link http://hibernate.org/42.html }.
+ * 当所有的映射都被Configuration解析之后，应用程序为了得到Session实例，
+ * 必须先得到它的工厂。这个工厂应该是被应用程序的所有线程共享的：
+ * SessionFactory sessions = cfg.buildSessionFactory();
+ * 当然，Hibernate并不禁止你的程序实例化多个SessionFactory。
+ * *************在你使用不止一个数据库的时候，这就有用了。*******
  */
 public class HibernateSessionFactory {
 

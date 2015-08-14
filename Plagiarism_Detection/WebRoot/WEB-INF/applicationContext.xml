@@ -15,7 +15,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver">
 		</property>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/plagiarism">
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/plagiarismDetection">
 		</property>
 		<property name="username" value="root"></property>
 	</bean>
@@ -31,7 +31,11 @@
 				</prop>
 			</props>
 		</property>
-	</bean>
+		<property name="mappingResources">
+			<list>
+				<value>kcl/qutong/plagiarism/hb/User.hbm.xml</value>
+				<value>kcl/qutong/plagiarism/hb/Taskmsg.hbm.xml</value></list>
+		</property></bean>
 	<!-- support hibernate -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -49,4 +53,32 @@
 			expression="execution(* kcl.qutong.plagiarism.dao.*.*(..))" />
 		<aop:advisor pointcut-ref="allDaoMethod" advice-ref="txAdvice" />
 	</aop:config>
+	<!-- 提供数据接口的bean -->
+	<bean id="userDAO" class="kcl.qutong.plagiarism.dao.impl.UserDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="taskDAO" class="kcl.qutong.plagiarism.dao.impl.TaskDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 依赖注入的一种实现形式,与用户相关的服务都由userservice负责 -->
+	<bean id="userService" class="kcl.qutong.plagiarism.service.UserServiceImpl" scope="prototype">
+		<property name="userDAO" ref="userDAO"/>
+	</bean>
+	<bean id="taskService" class="kcl.qutong.plagiarism.service.TaskServiceImpl" scope="prototype">
+		<property name="taskDAO" ref="taskDAO"/>
+	</bean>
+	<!-- login and register function -->
+	<bean id="BeanRegistAction" class="kcl.qutong.plagiarism.action.RegistAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	<bean id="BeanLoginAction" class="kcl.qutong.plagiarism.action.loginAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	<bean id="BeanLogoutAction" class="kcl.qutong.plagiarism.action.logoutAction" scope="prototype">
+	</bean>
+	<!-- create task -->
+	<bean id="BeancreTaskAction" class="kcl.qutong.plagiarism.action.creatTaskAction" scope="prototype">
+		<property name="taskService" ref="taskService"/>
+		<property name="userService" ref="userService"/>
+	</bean>
 </beans>

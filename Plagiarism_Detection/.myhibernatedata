@@ -1,6 +1,6 @@
 #MyEclipse Hibernate Properties
-#Sun Jul 19 13:02:31 BST 2015
-sessionFactoryName=kcl.qutong.plagiarism.hb.HibernateSessionFactory
+#Wed Aug 12 16:58:00 BST 2015
+sessionFactoryName=
 genBasicCompId=false
 profile=
 daoSFId=
@@ -16,10 +16,9 @@ libInstallFolder=WebRoot/WEB-INF/lib
 addLibs2Project=true
 genVersionTag=false
 sessionFactoryId=sessionFactory
-basePersistenceClass=
+basePersistenceClass=kcl.qutong.plagiarism.dao.pojo.User
 genAnnotations=false
 reSettingsFile=
 configFile=/Plagiarism_Detection/WebRoot/WEB-INF/applicationContext.xml
 createConfigFile=false
 addLibs2Classpath=true
-baseDaoClass=

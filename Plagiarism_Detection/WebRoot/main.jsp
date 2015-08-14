@@ -4,28 +4,18 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'main.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    this is the main page welcome ${userName}  <br>
-    <s:text name="username"></s:text>
-    <s:property value="username"/>
-    ${username}
-  </body>
+<head>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>同源性比对系统</title>
+</head>
+<frameset rows="86,*,11" frameborder="no" border="0" framespacing="0">
+	<frame src="pages/mainPage/topFrame.jsp" name="topFrame" scrolling="no" noresize="noresize" id="topFrame" />
+	<frame src="pages/mainPage/centerFrame.html" name="mainFrame" id="mainFrame" />
+	<frame src="pages/mainPage/downFrame.html" name="downFrame" scrolling="no" noresize="noresize" id="downFrame" />
+</frameset>
+<noframes>
+<body>
+</body>
+</noframes>
 </html>

@@ -1,0 +1,41 @@
+/* css复位 */
+body,div,p,th,td,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,img
+	{
+	margin: 0;
+	padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,em {
+	font-weight: 100;
+	font-style: normal;
+	font-size: 12px;
+}
+
+table {
+	border-collapse: collapse;
+	　border-spacing: 0;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+img {
+	border: 0;
+}
+
+a:link,a:active,a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #fff;
+}
+
+body {
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+	font-size: 12px;
+	color: #000;
+	overflow: hidden;
+}

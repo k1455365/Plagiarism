@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="kcl.qutong.plagiarism.hb">
+	<class name="kcl.qutong.plagiarism.dao.pojo.Task" table="taskmsg"
+		lazy="false">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="taskname" column="TASKNAME" type="string"
+			not-null="true" length="30" />
+		<property name="result" column="RESULT" type="string" length="255" />
+		<property name="srcdir" column="SRCDIR" type="string" length="255" />
+		<property name="trgdir" column="TRGDIR" type="string" length="255" />
+		<property name="tasktime" column="TASKTIME" type="timestamp" />
+	</class>
+</hibernate-mapping>

@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+	<constant name="struts.devMode" value="true"></constant>
 	<!-- configuration of login -->
 	<package name="login" extends="struts-default">
-		<action name="loginaction" class="com.action.loginAction">
-			<result name="success">main.jsp</result>
+		<action name="loginaction" class="BeanLoginAction">
+			<result name="success">MainCreTask.jsp</result>
 			<result name="error">error.jsp</result>
 			<result name="cancel" type="redirectAction">Welcome</result>
 		</action>
-	<!-- use action jump back to welcome page -->
-		<action name="Welcome" class="com.action.welcome">
-			<result name="cancel">Welcome.jsp</result>
+		<action name="registeraction" class="BeanRegistAction">
+			<result name="success">main_new.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="cancel" type="redirectAction">Welcome</result>
 		</action>
+		<action name="logoutaction" class="BeanLogoutAction">
+			<result name="success" type="redirectAction">Welcome</result>
+		</action>
+		<!-- use action jump back to welcome page -->
+		<action name="Welcome" >
+			<result name="cancel">welcome.html</result>
+		</action>
+	</package>
+
+	<package name="task" extends="struts-default">
+		<action name="creTaskAction" class="BeancreTaskAction">
+			<result name="success">error.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="cancel" type="redirectAction">Welcome</result>
+		</action>
+		<!-- <action name="ShowTask" class="BeanShowTaskAction">
+			<result name="success">/pages/task/TaskList.jsp</result>
+			<result name="error">/error.html</result>
+		</action> -->
 	</package>
 </struts>    
