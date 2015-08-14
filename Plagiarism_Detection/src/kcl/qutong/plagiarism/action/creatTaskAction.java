@@ -1,6 +1,5 @@
 package kcl.qutong.plagiarism.action;
 
-import java.io.File;
 import java.sql.Timestamp;
 import kcl.qutong.plagiarism.dao.pojo.User;
 import kcl.qutong.plagiarism.service.TaskService;
@@ -16,8 +15,22 @@ public class creatTaskAction extends ActionSupport{
 	private UserService userService;
 	private String username;
 	private String taskname;
-	private File fstFile;
-	private File secFile;
+//	private File fstFile;
+//	private File secFile;
+	private String srcdir;
+	public String getSrcdir() {
+		return srcdir;
+	}
+	public void setSrcdir(String srcdir) {
+		this.srcdir = srcdir;
+	}
+	public String getTrgdir() {
+		return trgdir;
+	}
+	public void setTrgdir(String trgdir) {
+		this.trgdir = trgdir;
+	}
+	private String trgdir;
 	private Timestamp tasktime;
 	private User u;
 	
@@ -48,18 +61,18 @@ public class creatTaskAction extends ActionSupport{
 		this.taskname = taskname;
 	}
 
-	public File getFstFile() {
-		return fstFile;
-	}
-	public void setFstFile(File fstFile) {
-		this.fstFile = fstFile;
-	}
-	public File getSecFile() {
-		return secFile;
-	}
-	public void setSecFile(File secFile) {
-		this.secFile = secFile;
-	}
+//	public File getFstFile() {
+//		return fstFile;
+//	}
+//	public void setFstFile(File fstFile) {
+//		this.fstFile = fstFile;
+//	}
+//	public File getSecFile() {
+//		return secFile;
+//	}
+//	public void setSecFile(File secFile) {
+//		this.secFile = secFile;
+//	}
 	public Timestamp getTasktime() {
 		return tasktime;
 	}
@@ -84,8 +97,8 @@ public class creatTaskAction extends ActionSupport{
 		System.out.println("The user'name is ---------- " + username);
 		System.out.println("The task'name is ---------- " + taskname);
 		System.out.println("The task's type is ---------- " + taskway);
-		System.out.println("The 1st file directory is ---------- " + fstFile);
-		System.out.println("The 2nd file directory is ---------- " + secFile);
+		System.out.println("The 1st file directory is ---------- " + srcdir);
+		System.out.println("The 2nd file directory is ---------- " + trgdir);
 		
 		
 		//store files in server and get its local path
