@@ -185,10 +185,11 @@ public class creatTaskAction extends ActionSupport {
 		}
 
 		// preprocess file based on the type of files, java or text
-		String fstContent=cr.readerManage(taskway,fst);
-		System.out.println("content of first file is: \n"+fstContent);
-		String secContent=cr.readerManage(taskway,sec);
-		System.out.println("content of second file is: \n"+secContent);
+		cr=new contentReader();
+		String Content1=cr.readerManage(taskway,fst);
+		System.out.println("content of first file is: \n"+Content1);
+		String Content2=cr.readerManage(taskway,sec);
+		System.out.println("content of second file is: \n"+Content2);
 		// store task into database with taskname files directory and result
 		// return result include largest value, similarity, result,
 		// matrix...
