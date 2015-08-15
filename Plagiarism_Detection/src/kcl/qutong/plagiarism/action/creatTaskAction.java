@@ -1,6 +1,9 @@
 package kcl.qutong.plagiarism.action;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Timestamp;
 
 import org.apache.commons.io.FileUtils;
@@ -10,6 +13,7 @@ import kcl.qutong.plagiarism.dao.pojo.User;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
 import kcl.qutong.plagiarism.util.SaveUploadFile;
+import kcl.qutong.plagiarism.util.contentReader;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -30,6 +34,7 @@ public class creatTaskAction extends ActionSupport {
 	private String secFileName;
 	private String secContentType;
 	private String srcdir;
+	private contentReader cr;
 
 	public String getSrcdir() {
 		return srcdir;
@@ -162,13 +167,7 @@ public class creatTaskAction extends ActionSupport {
 		System.out.println("The user'name is ---------- " + username);
 		System.out.println("The task'name is ---------- " + taskname);
 		System.out.println("The task's type is ---------- " + taskway);
-
-		// String realpath =
-		// ServletActionContext.getServletContext().getRealPath(
-		// "/upload");
-		// //
-		// /Users/qutong/Desktop/Postgraduate/Final_project/project/.metadata/.me_tcat/webapps/Plagiarism_Detection/upload
-		// System.out.println("realpath: " + realpath);
+		/*------------------------------------upload files--------------------------------------------*/
 		if (SaveUploadFile.savefile(fst, fstFileName)) {
 			System.out.println("successfullu upload file: " + fstFileName
 					+ "this is a " + fstContentType + " file.");
@@ -184,9 +183,12 @@ public class creatTaskAction extends ActionSupport {
 		else{
 			System.out.println("second upload fail");
 		}
-		// store files in server and get its local path
-		// preprocess file based on the type of files, java or text
 
+		// preprocess file based on the type of files, java or text
+		String fstContent=cr.readerManage(taskway,fst);
+		System.out.println("content of first file is: \n"+fstContent);
+		String secContent=cr.readerManage(taskway,sec);
+		System.out.println("content of second file is: \n"+secContent);
 		// store task into database with taskname files directory and result
 		// return result include largest value, similarity, result,
 		// matrix...

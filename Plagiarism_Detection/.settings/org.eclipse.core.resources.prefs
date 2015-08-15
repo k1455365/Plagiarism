@@ -1,4 +1,4 @@
-#Sat Aug 15 02:21:32 BST 2015
+#Sat Aug 15 03:52:50 BST 2015
 eclipse.preferences.version=1
 encoding//WebRoot/main.jsp=UTF-8
 encoding//src/kcl/qutong/plagiarism/action/creatTaskAction.java=UTF-8
@@ -6,4 +6,5 @@ encoding//src/kcl/qutong/plagiarism/action/loginAction.java=UTF-8
 encoding//src/kcl/qutong/plagiarism/hb/HibernateSessionFactory.java=UTF-8
 encoding//src/kcl/qutong/plagiarism/util/FileUpload.java=UTF-8
 encoding//src/kcl/qutong/plagiarism/util/PDFReader.java=UTF-8
+encoding//src/kcl/qutong/plagiarism/util/contentReader.java=UTF-8
 encoding//test/kcl/qutong/plagiarism/dao/pojo/ExportDB.java=UTF-8
