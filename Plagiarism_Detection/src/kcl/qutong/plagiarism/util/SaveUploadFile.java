@@ -11,7 +11,7 @@ import org.apache.struts2.ServletActionContext;
  *
  */
 public class SaveUploadFile {
-public static boolean savefile(File file,String filename) throws IOException{
+public static String savefile(File file,String filename) throws IOException{
 	String realpath = ServletActionContext.getServletContext().getRealPath(
 			"/upload");
 	// /Users/qutong/Desktop/Postgraduate/Final_project/project/.metadata/.me_tcat/webapps/Plagiarism_Detection/upload
@@ -21,11 +21,12 @@ public static boolean savefile(File file,String filename) throws IOException{
 		if (!savefile.getParentFile().exists())
 			savefile.getParentFile().mkdirs();
 		FileUtils.copyFile(file, savefile);
-		return true;
+		String path=realpath+"/"+filename;
+		return path;
 	}
 	else{
 		System.out.println("file is empty");
-		return false;
+		return null;
 	}
 }
 }
