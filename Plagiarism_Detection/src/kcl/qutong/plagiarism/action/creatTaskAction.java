@@ -9,6 +9,8 @@ import org.apache.struts2.ServletActionContext;
 import kcl.qutong.plagiarism.dao.pojo.User;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
+import kcl.qutong.plagiarism.util.SaveUploadFile;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -27,6 +29,25 @@ public class creatTaskAction extends ActionSupport {
 	private File sec;
 	private String secFileName;
 	private String secContentType;
+	private String srcdir;
+
+	public String getSrcdir() {
+		return srcdir;
+	}
+
+	public void setSrcdir(String srcdir) {
+		this.srcdir = srcdir;
+	}
+
+	public String getTrgdir() {
+		return trgdir;
+	}
+
+	public void setTrgdir(String trgdir) {
+		this.trgdir = trgdir;
+	}
+
+	private String trgdir;
 	private Timestamp tasktime;
 	private User u;
 
@@ -142,10 +163,27 @@ public class creatTaskAction extends ActionSupport {
 		System.out.println("The task'name is ---------- " + taskname);
 		System.out.println("The task's type is ---------- " + taskway);
 
-		System.out.println("The 1st file directory is ---------- "
-				+ fstFileName);
-		System.out.println("The 2nd file directory is ---------- "
-				+ secFileName);
+		// String realpath =
+		// ServletActionContext.getServletContext().getRealPath(
+		// "/upload");
+		// //
+		// /Users/qutong/Desktop/Postgraduate/Final_project/project/.metadata/.me_tcat/webapps/Plagiarism_Detection/upload
+		// System.out.println("realpath: " + realpath);
+		if (SaveUploadFile.savefile(fst, fstFileName)) {
+			System.out.println("successfullu upload file: " + fstFileName
+					+ "this is a " + fstContentType + " file.");
+		}
+		else{
+			System.out.println("first upload fail");
+		}
+		//upload second file
+		if (SaveUploadFile.savefile(sec, secFileName)) {
+			System.out.println("successfullu upload file: " + secFileName
+					+ "this is a " + secContentType + " file.");
+		}
+		else{
+			System.out.println("second upload fail");
+		}
 		// store files in server and get its local path
 		// preprocess file based on the type of files, java or text
 
