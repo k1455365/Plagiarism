@@ -78,7 +78,7 @@ input {
 </head>
 
 <body>
-	<s:form method="post" action="creTaskAction">
+	<s:form method="post" action="creTaskAction" enctype="multipart/form-data">
 		<%--     this is the main page welcome 
     2: <s:text name="username"></s:text>
     3: <s:property value="username"/>
@@ -164,7 +164,7 @@ input {
 								<!--     upload files -->
 								<table class="table form" style="width:90%; min-width:300px;"
 									align="center" cellspacing="1">
-<!-- 									<tr class="odd">
+ 									<tr class="odd">
 										<td class="column1">Choose 1st file:</td>
 										<td><input name="fst" type="file" id="doc" />
 										</td>
@@ -173,8 +173,8 @@ input {
 										<td class="column1">Choose 2nd file:</td>
 										<td><input name="sec" type="file" id="doc" />
 										</td>
-									</tr> -->
-																		<tr class="odd">
+									</tr>
+																		<!-- <tr class="odd">
 										<td class="column1">Choose 1st file:</td>
 										<td><input name="srcdir" type="file" id="doc" />
 										</td>
@@ -183,7 +183,7 @@ input {
 										<td class="column1">Choose 2nd file:</td>
 										<td><input name="trgdir" type="file" id="doc" />
 										</td>
-									</tr>
+									</tr> -->
 									<tr class="odd">
 										<td colspan="2">
 											<div align="center">

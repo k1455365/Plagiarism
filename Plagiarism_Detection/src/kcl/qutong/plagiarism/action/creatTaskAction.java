@@ -2,6 +2,10 @@ package kcl.qutong.plagiarism.action;
 
 import java.io.File;
 import java.sql.Timestamp;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+
 import kcl.qutong.plagiarism.dao.pojo.User;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
@@ -23,25 +27,6 @@ public class creatTaskAction extends ActionSupport {
 	private File sec;
 	private String secFileName;
 	private String secContentType;
-	private String srcdir;
-
-	public String getSrcdir() {
-		return srcdir;
-	}
-
-	public void setSrcdir(String srcdir) {
-		this.srcdir = srcdir;
-	}
-
-	public String getTrgdir() {
-		return trgdir;
-	}
-
-	public void setTrgdir(String trgdir) {
-		this.trgdir = trgdir;
-	}
-
-	private String trgdir;
 	private Timestamp tasktime;
 	private User u;
 
@@ -156,20 +141,18 @@ public class creatTaskAction extends ActionSupport {
 		System.out.println("The user'name is ---------- " + username);
 		System.out.println("The task'name is ---------- " + taskname);
 		System.out.println("The task's type is ---------- " + taskway);
-		System.out.println("The 1st file directory is ---------- " + srcdir);
-		System.out.println("The 2nd file directory is ---------- " + trgdir);
 
-		// System.out.println("The 1st file directory is ---------- " +
-		// fstFileName);
-		// System.out.println("The 2nd file directory is ---------- " +
-		// secFileName);
+		System.out.println("The 1st file directory is ---------- "
+				+ fstFileName);
+		System.out.println("The 2nd file directory is ---------- "
+				+ secFileName);
 		// store files in server and get its local path
 		// preprocess file based on the type of files, java or text
 
 		// store task into database with taskname files directory and result
-		// return result include largest value, similarity, result, matrix...
+		// return result include largest value, similarity, result,
+		// matrix...
+
 		return "success";
-
 	}
-
 }
