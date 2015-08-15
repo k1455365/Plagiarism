@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
+import kcl.qutong.plagiarism.dao.pojo.Task;
 import kcl.qutong.plagiarism.dao.pojo.User;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
@@ -25,6 +26,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class creatTaskAction extends ActionSupport {
 	private TaskService taskService;
 	private UserService userService;
+	private Task taskBean;
 	private String username;
 	private String taskname;
 	private File fst;
@@ -50,6 +52,14 @@ public class creatTaskAction extends ActionSupport {
 
 	public void setTrgdir(String trgdir) {
 		this.trgdir = trgdir;
+	}
+
+	public Task getTaskBean() {
+		return taskBean;
+	}
+
+	public void setTaskBean(Task taskBean) {
+		this.taskBean = taskBean;
 	}
 
 	private String trgdir;
@@ -168,7 +178,8 @@ public class creatTaskAction extends ActionSupport {
 		System.out.println("The task'name is ---------- " + taskname);
 		System.out.println("The task's type is ---------- " + taskway);
 		/*------------------------------------upload files--------------------------------------------*/
-		if (SaveUploadFile.savefile(fst, fstFileName)) {
+		srcdir=SaveUploadFile.savefile(fst, fstFileName);
+		if (srcdir!=null) {
 			System.out.println("successfullu upload file: " + fstFileName
 					+ "this is a " + fstContentType + " file.");
 		}
@@ -176,7 +187,8 @@ public class creatTaskAction extends ActionSupport {
 			System.out.println("first upload fail");
 		}
 		//upload second file
-		if (SaveUploadFile.savefile(sec, secFileName)) {
+		trgdir=SaveUploadFile.savefile(sec, secFileName);
+		if (trgdir!=null) {
 			System.out.println("successfullu upload file: " + secFileName
 					+ "this is a " + secContentType + " file.");
 		}
@@ -191,6 +203,14 @@ public class creatTaskAction extends ActionSupport {
 		String Content2=cr.readerManage(taskway,sec);
 		System.out.println("content of second file is: \n"+Content2);
 		// store task into database with taskname files directory and result
+		taskBean=new Task();
+		taskBean.setTaskname(taskname);
+		taskBean.setResult("result");
+		taskBean.setSrcdir(srcdir);
+		taskBean.setTrgdir(trgdir);
+		taskBean.setTasktime(new Timestamp(System.currentTimeMillis()));
+		taskService.addTask(taskBean);
+		System.out.println("-------------------------end-----------------------------");
 		// return result include largest value, similarity, result,
 		// matrix...
 

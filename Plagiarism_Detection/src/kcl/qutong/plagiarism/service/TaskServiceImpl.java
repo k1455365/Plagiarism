@@ -17,7 +17,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public void addTask(Task taskBean) {
 		// TODO Auto-generated method stub
-
+		taskDAO.addTask(taskBean);
 	}
 
 	@Override
