@@ -21,7 +21,7 @@
 <!--     自动生成数据库表格 create 每次重新生成新的表格并覆盖掉以前。update智能更新，也可以使用configuration来加在配置,kcl...pojo.ExportDB.java-->
 <property name="hbm2ddl.auto">update</property>
 <!--     映射文件声明 -->
-<mapping resource="kcl/qutong/plagiarism/hb/Taskmsg.hbm.xml"/>
+<mapping resource="kcl/qutong/plagiarism/hb/Task.hbm.xml"/>
 <mapping resource="kcl/qutong/plagiarism/hb/User.hbm.xml"/>
     </session-factory>
 

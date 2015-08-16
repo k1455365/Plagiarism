@@ -31,7 +31,8 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public List<Task> findTasksbyUser(String username) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Task> list =taskDAO.findTasksbyUser(username);
+		return list;
 	}
 
 }

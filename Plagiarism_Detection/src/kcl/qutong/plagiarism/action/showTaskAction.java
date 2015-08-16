@@ -56,7 +56,7 @@ public class showTaskAction extends ActionSupport{
 //		ActionContext acx = invocation.getInvocationContext();
 //		String username = (String)acx.getSession().get("username");
 		  //取得名为Session的属性
-		System.out.println("user is: "+username);
+		System.out.println("user is: "+username+" he's tasks are: "+taskService.findTasksbyUser(username));
 		return SUCCESS;
 		
 	}

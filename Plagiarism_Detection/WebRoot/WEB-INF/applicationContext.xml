@@ -34,7 +34,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>kcl/qutong/plagiarism/hb/User.hbm.xml</value>
-				<value>kcl/qutong/plagiarism/hb/Taskmsg.hbm.xml</value></list>
+				<value>kcl/qutong/plagiarism/hb/Task.hbm.xml</value></list>
 		</property></bean>
 	<!-- support hibernate -->
 	<bean id="transactionManager"
