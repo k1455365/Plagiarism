@@ -55,6 +55,7 @@ a.white {
 				<th>srcdir</th>
 				<th>trgdir</th>
 				<th>tasktime</th>
+				<th>operations</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -69,6 +70,8 @@ a.white {
 					</td> --%>
 					<td><s:property value="trgdir" /></td>
 					<td><s:date name="tasktime" /></td>
+					<td><a href="/webcmp/taskmgr/DelOneTask.action?id=${id} " >delete</a> | <a href="/webcmp/taskmgr/ShowFileResult.action?taskid=${id}">details</a></td>
+    
 				</tr>
 			</s:iterator>
 		</tbody>
