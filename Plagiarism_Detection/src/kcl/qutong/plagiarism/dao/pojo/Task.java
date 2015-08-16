@@ -8,6 +8,7 @@ public class Task {
 	private String result;
 	private String srcdir;
 	private String trgdir;
+	private String creator;
 	private Timestamp tasktime;
 	public int getId() {
 		return id;
@@ -44,5 +45,11 @@ public class Task {
 	}
 	public void setTasktime(Timestamp tasktime) {
 		this.tasktime = tasktime;
+	}
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
 	}
 }

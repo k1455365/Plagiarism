@@ -111,6 +111,9 @@ input {
 									<td style="color:#FFFFFF;" width="28.9%">Welcome User： <s:property
 											value="username" />
 									</td>
+									<td width="0.6%" height="20"></td>
+									<td width="70%" align="center"><a href="/Plagiarism_Detection/task/showTask.action?username=<s:property
+											value="username" />">History</a></td>
 									<td width="70%" align="right">
 										<table id="DataList1" cellspacing="0" cellpadding="0"
 											style="border-width:0px;height:26px;border-collapse:collapse;">

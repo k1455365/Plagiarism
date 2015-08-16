@@ -25,5 +25,8 @@
         <property name="tasktime" type="java.sql.Timestamp">
             <column name="TASKTIME" length="19" />
         </property>
+        <property name="creator" type="java.lang.String">
+            <column name="CREATOR" />
+        </property>
     </class>
 </hibernate-mapping>

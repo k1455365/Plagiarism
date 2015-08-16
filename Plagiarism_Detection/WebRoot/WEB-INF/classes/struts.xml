@@ -35,9 +35,9 @@
 			<result name="error">error.jsp</result>
 			<result name="cancel" type="redirectAction">Welcome</result>
 		</action>
-		<!-- <action name="ShowTask" class="BeanShowTaskAction">
+	<action name="showTask" class="BeanShowTaskAction">
 			<result name="success">/pages/task/TaskList.jsp</result>
 			<result name="error">/error.html</result>
-		</action> -->
+		</action>
 	</package>
 </struts>    

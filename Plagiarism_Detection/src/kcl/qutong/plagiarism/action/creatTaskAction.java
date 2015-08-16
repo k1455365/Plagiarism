@@ -209,6 +209,7 @@ public class creatTaskAction extends ActionSupport {
 		taskBean.setSrcdir(srcdir);
 		taskBean.setTrgdir(trgdir);
 		taskBean.setTasktime(new Timestamp(System.currentTimeMillis()));
+		taskBean.setCreator(username);
 		taskService.addTask(taskBean);
 		System.out.println("-------------------------end-----------------------------");
 		// return result include largest value, similarity, result,
