@@ -173,35 +173,39 @@ public class creatTaskAction extends ActionSupport {
 		// System.out.println("current session is: "+ActionContext.getContext().getSession()+"username is:"+requsername);
 		//
 		/*------------------------------------get task info--------------------------------------------*/
-		System.out.println("开始执行 cretask execute()");
-		System.out.println("The user'name is ---------- " + username);
-		System.out.println("The task'name is ---------- " + taskname);
-		System.out.println("The task's type is ---------- " + taskway);
-		/*------------------------------------upload files--------------------------------------------*/
+//		System.out.println("开始执行 cretask execute()");
+//		System.out.println("The user'name is ---------- " + username);
+//		System.out.println("The task'name is ---------- " + taskname);
+//		System.out.println("The task's type is ---------- " + taskway);
+		/*------------------------------------upload files into server--------------------------------------------*/
 		srcdir=SaveUploadFile.savefile(fst, fstFileName);
-		if (srcdir!=null) {
-			System.out.println("successfullu upload file: " + fstFileName
-					+ "this is a " + fstContentType + " file.");
-		}
-		else{
-			System.out.println("first upload fail");
-		}
+//		if (srcdir!=null) {
+//			System.out.println("successfullu upload file: " + fstFileName
+//					+ "this is a " + fstContentType + " file.");
+//		}
+//		else{
+//			System.out.println("first upload fail");
+//		}
 		//upload second file
 		trgdir=SaveUploadFile.savefile(sec, secFileName);
-		if (trgdir!=null) {
-			System.out.println("successfullu upload file: " + secFileName
-					+ "this is a " + secContentType + " file.");
-		}
-		else{
-			System.out.println("second upload fail");
-		}
+//		if (trgdir!=null) {
+//			System.out.println("successfullu upload file: " + secFileName
+//					+ "this is a " + secContentType + " file.");
+//		}
+//		else{
+//			System.out.println("second upload fail");
+//		}
 
-		// preprocess file based on the type of files, java or text
+		/*-------------------------- read files based on the type of files, java or text---------------------------------*/
 		cr=new contentReader();
-		String Content1=cr.readerManage(taskway,fst);
-		System.out.println("content of first file is: \n"+Content1);
-		String Content2=cr.readerManage(taskway,sec);
-		System.out.println("content of second file is: \n"+Content2);
+		String Content1=cr.readerManage(taskway,fst,srcdir);
+		System.out.println("-------------------------content of first file is: \n"+Content1);
+		String Content2=cr.readerManage(taskway,sec,trgdir);
+		System.out.println("-------------------------content of second file is: \n"+Content2);
+		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
+		// return result include largest value, similarity, result,
+		//string[3]={similarity,details,fst,sec}
+		//string[3] mixResult=compareTool(Content1,Content2,taskway)
 		// store task into database with taskname files directory and result
 		taskBean=new Task();
 		taskBean.setTaskname(taskname);
@@ -212,7 +216,7 @@ public class creatTaskAction extends ActionSupport {
 		taskBean.setCreator(username);
 		taskService.addTask(taskBean);
 		System.out.println("-------------------------end-----------------------------");
-		// return result include largest value, similarity, result,
+		
 		// matrix...
 
 		return "success";
