@@ -9,6 +9,11 @@ import java.net.URL;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
+/**
+ * this class will read pdf document and store its' content in server side with txt 
+ * @author qutong
+ *
+ */
 public class PDFReader {
  public void readFdf(String file) throws Exception {
   // 是否排序
