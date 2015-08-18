@@ -14,6 +14,7 @@ import kcl.qutong.plagiarism.dao.pojo.User;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
 import kcl.qutong.plagiarism.util.SaveUploadFile;
+import kcl.qutong.plagiarism.util.compareManager;
 import kcl.qutong.plagiarism.util.contentReader;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -37,7 +38,13 @@ public class creatTaskAction extends ActionSupport {
 	private String secContentType;
 	private String srcdir;
 	private contentReader cr;
-
+//result set
+	private String srccontent;
+	private String trgcontent;
+	private String srcfile;
+	private String trgfile;
+	private String Textresult;
+	private String textsim;
 	public String getSrcdir() {
 		return srcdir;
 	}
@@ -163,7 +170,8 @@ public class creatTaskAction extends ActionSupport {
 	public void setTaskway(int taskway) {
 		this.taskway = taskway;
 	}
-
+//getter setter for result
+	
 	public String execute() throws Exception {
 		// HttpServletRequest req = ServletActionContext.getRequest();
 		// HttpSession session=req.getSession();
@@ -206,6 +214,7 @@ public class creatTaskAction extends ActionSupport {
 		// return result include largest value, similarity, result,
 		//string[3]={similarity,details,fst,sec}
 		//string[3] mixResult=compareTool(Content1,Content2,taskway)
+		String[] mixResult=compareManager.compareTool(Content1, Content2, taskway);
 		// store task into database with taskname files directory and result
 		taskBean=new Task();
 		taskBean.setTaskname(taskname);
@@ -216,9 +225,64 @@ public class creatTaskAction extends ActionSupport {
 		taskBean.setCreator(username);
 		taskService.addTask(taskBean);
 		System.out.println("-------------------------end-----------------------------");
-		
+		setSrccontent(Content1);
+		setTrgcontent(Content2);
+		setSrcfile(srcdir);
+		setTrgfile(trgdir);
+		setTextresult(mixResult[1]);
+		setTextsim(mixResult[0]);
 		// matrix...
 
 		return "success";
 	}
+
+	public String getSrccontent() {
+		return srccontent;
+	}
+
+	public void setSrccontent(String srccontent) {
+		this.srccontent = srccontent;
+	}
+
+	public String getTrgcontent() {
+		return trgcontent;
+	}
+
+	public void setTrgcontent(String trgcontent) {
+		this.trgcontent = trgcontent;
+	}
+
+	public String getSrcfile() {
+		return srcfile;
+	}
+
+	public void setSrcfile(String srcfile) {
+		this.srcfile = srcfile;
+	}
+
+	public String getTrgfile() {
+		return trgfile;
+	}
+
+	public String getTextresult() {
+		return Textresult;
+	}
+
+	public void setTextresult(String textresult) {
+		Textresult = textresult;
+	}
+
+	public void setTrgfile(String trgfile) {
+		this.trgfile = trgfile;
+	}
+
+	public String getTextsim() {
+		return textsim;
+	}
+
+	public void setTextsim(String textsim) {
+		this.textsim = textsim;
+	}
+
+	
 }
