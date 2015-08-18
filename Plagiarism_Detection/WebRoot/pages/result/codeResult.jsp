@@ -38,7 +38,7 @@
 			startLine = line[0];
 			endLine = line[1];
 			//configure style of source block
-			//alert (simRecord[i]);
+			alert (simRecord[i]);
 			for ( var n = (startLine - 1); n < endLine; n++) {
 				trg[n] = "<span style=\"color:red\">•</span>" + trg[n];
 			}
@@ -138,7 +138,7 @@
 		action="/webcmp/taskmgr/ShowTextResult.action">
 	<!-- flag获取 -->
 			<div id="flag" style="display:none">
-				<s:property value="textcompareflag" />
+				<s:property value="taskway" />
 		</div>
 	<!-- 源代码获取 -->
 
