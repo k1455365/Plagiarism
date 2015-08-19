@@ -60,7 +60,10 @@ public class contentReader {
 		case 1:
 			content = pdfType(path);
 			break;
-		}
+		case 3:
+			content = pdfType(path);
+				break;
+			}
 		return content;
 	}
 
