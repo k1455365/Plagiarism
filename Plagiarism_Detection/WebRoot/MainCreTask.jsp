@@ -161,6 +161,22 @@ input {
 										<td><select tabindex="普通" name="taskway"><option
 													value="1">text</option>
 												<option value="2">java</option>
+												<option value="3">character</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td class="column1">Token Size:</td>
+										<td><select tabindex="普通" name="tokensize"><option
+													value="1">word</option>
+												<option value="2">line</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td class="column1">Algorithm:</td>
+										<td><select tabindex="普通" name="algorithm"><option
+													value="1">Basic Smith-Waterman</option>
+												<option value="2">Smith-Waterman with cut-off</option>
+												<option value="3">Smith-Waterman without verlap</option>
 										</select></td>
 									</tr>
 								</table>
