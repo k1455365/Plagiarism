@@ -5,11 +5,17 @@ import java.sql.Timestamp;
 public class Task {
 	private int id;
 	private String taskname;
+	private String algorithm;
+	private String tokensize;
+	private String taskway;
 	private String result;
 	private String srcdir;
 	private String trgdir;
 	private String creator;
 	private Timestamp tasktime;
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -52,4 +58,24 @@ public class Task {
 	public void setCreator(String creator) {
 		this.creator = creator;
 	}
+
+	public String getTaskway() {
+		return taskway;
+	}
+	public void setTaskway(String taskway) {
+		this.taskway = taskway;
+	}
+	public String getAlgorithm() {
+		return algorithm;
+	}
+	public void setAlgorithm(String algorithm) {
+		this.algorithm = algorithm;
+	}
+	public String getTokensize() {
+		return tokensize;
+	}
+	public void setTokensize(String tokensize) {
+		this.tokensize = tokensize;
+	}
+
 }
