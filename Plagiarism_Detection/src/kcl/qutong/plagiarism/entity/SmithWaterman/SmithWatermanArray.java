@@ -19,8 +19,10 @@ public class SmithWatermanArray {
                     mD[0][j] = 0;
             }
     }
-    
+	
     void process() {
+    	System.out.println("m="+mSeqA.length);
+    	System.out.println("n="+mSeqB.length);
             for (int i = 1; i <= mSeqA.length; i++) {
                     for (int j = 1; j <= mSeqB.length; j++) {
                             int scoreDiag = mD[i-1][j-1] + weight(i, j);
@@ -61,7 +63,7 @@ public class SmithWatermanArray {
                     mAlignmentSeqB += mSeqB[l - 1];
                     l--;
             }
-            
+            System.out.println("i is: "+i+" j is:"+j);
             while (mD[i][j] != 0) {                 
                     if (mD[i][j] == mD[i-1][j-1] + weight(i, j)) {                          
                             mAlignmentSeqA += mSeqA[i-1];
@@ -99,7 +101,7 @@ public class SmithWatermanArray {
     
     private int weight(int i, int j) {
             if (mSeqA[i - 1] == mSeqB[j - 1]) {
-                    return 2;
+                    return 1;
             } else {
                     return -1;
             }
@@ -132,10 +134,13 @@ public class SmithWatermanArray {
             System.out.println();
     }
     
-    public static void main(String [] args) {               
-            char[] seqB = { 'A', 'C', 'G', 'A' };
-            char[] seqA = { 'T', 'C', 'C', 'G' };
-            
+    public static void main(String [] args) {   
+    	String a="abcxdefghiymzjlukpqsjtuv";
+    	String b="abcdefghijklmnopqrsjtuv";
+//            char[] seqB = { 'A', 'B', 'C', 'B', 'A', 'D', 'B', 'C', 'A' };
+//            char[] seqB = { 'A', 'B', 'B', 'D', 'B', 'D', 'A' };
+            char[] seqA =a.toCharArray();
+            char[] seqB =b.toCharArray();
             SmithWatermanArray sw = new SmithWatermanArray();
             sw.init(seqA, seqB);            
             sw.process();
