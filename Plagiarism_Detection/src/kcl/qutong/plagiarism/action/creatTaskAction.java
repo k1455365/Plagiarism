@@ -16,6 +16,7 @@ import kcl.qutong.plagiarism.service.UserService;
 import kcl.qutong.plagiarism.util.SaveUploadFile;
 import kcl.qutong.plagiarism.util.compareManager;
 import kcl.qutong.plagiarism.util.contentReader;
+import kcl.qutong.plagiarism.util.taskContentProcess;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -37,6 +38,13 @@ public class creatTaskAction extends ActionSupport {
 	private String secFileName;
 	private String secContentType;
 	private String srcdir;
+	private String trgdir;
+	private Timestamp tasktime;
+	private int taskway;// identify java or text type or token
+	private User u;
+	private int algorithm;
+	private int tokensize;
+	//compare needed
 	private contentReader cr;
 //result set
 	private String srccontent;
@@ -69,11 +77,6 @@ public class creatTaskAction extends ActionSupport {
 		this.taskBean = taskBean;
 	}
 
-	private String trgdir;
-	private Timestamp tasktime;
-	private User u;
-
-	private int taskway;// identify java or text type
 
 	public TaskService getTaskService() {
 		return taskService;
@@ -170,72 +173,6 @@ public class creatTaskAction extends ActionSupport {
 	public void setTaskway(int taskway) {
 		this.taskway = taskway;
 	}
-//getter setter for result
-	
-	public String execute() throws Exception {
-		// HttpServletRequest req = ServletActionContext.getRequest();
-		// HttpSession session=req.getSession();
-		// //taskname=(String)session.getAttribute("taskname");
-		// String
-		// requsername=(String)session.getAttribute("username");//获取登录用户名作为创建者
-		// System.out.println("current session is: "+ActionContext.getContext().getSession()+"username is:"+requsername);
-		//
-		/*------------------------------------get task info--------------------------------------------*/
-//		System.out.println("开始执行 cretask execute()");
-//		System.out.println("The user'name is ---------- " + username);
-//		System.out.println("The task'name is ---------- " + taskname);
-//		System.out.println("The task's type is ---------- " + taskway);
-		/*------------------------------------upload files into server--------------------------------------------*/
-		srcdir=SaveUploadFile.savefile(fst, fstFileName);
-//		if (srcdir!=null) {
-//			System.out.println("successfullu upload file: " + fstFileName
-//					+ "this is a " + fstContentType + " file.");
-//		}
-//		else{
-//			System.out.println("first upload fail");
-//		}
-		//upload second file
-		trgdir=SaveUploadFile.savefile(sec, secFileName);
-//		if (trgdir!=null) {
-//			System.out.println("successfullu upload file: " + secFileName
-//					+ "this is a " + secContentType + " file.");
-//		}
-//		else{
-//			System.out.println("second upload fail");
-//		}
-
-		/*-------------------------- read files based on the type of files, java or text---------------------------------*/
-		cr=new contentReader();
-		String Content1=cr.readerManage(taskway,fst,srcdir);
-		System.out.println("-------------------------content of first file is: \n"+Content1);
-		String Content2=cr.readerManage(taskway,sec,trgdir);
-		System.out.println("-------------------------content of second file is: \n"+Content2);
-		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
-		// return result include largest value, similarity, result,
-		//string[3]={similarity,details,fst,sec}
-		//string[3] mixResult=compareTool(Content1,Content2,taskway)
-		String[] mixResult=compareManager.compareTool(Content1, Content2, taskway);
-		// store task into database with taskname files directory and result
-		taskBean=new Task();
-		taskBean.setTaskname(taskname);
-		taskBean.setResult("result");
-		taskBean.setSrcdir(srcdir);
-		taskBean.setTrgdir(trgdir);
-		taskBean.setTasktime(new Timestamp(System.currentTimeMillis()));
-		taskBean.setCreator(username);
-		taskService.addTask(taskBean);
-		System.out.println("-------------------------end-----------------------------");
-		setSrccontent(Content1);
-		setTrgcontent(Content2);
-		setSrcfile(srcdir);
-		setTrgfile(trgdir);
-		setTextresult(mixResult[1]);
-		setTextsim(mixResult[0]);
-		// matrix...
-
-		return "success";
-	}
-
 	public String getSrccontent() {
 		return srccontent;
 	}
@@ -282,6 +219,90 @@ public class creatTaskAction extends ActionSupport {
 
 	public void setTextsim(String textsim) {
 		this.textsim = textsim;
+	}
+
+//getter setter for result
+	
+	public int getAlgorithm() {
+		return algorithm;
+	}
+
+	public void setAlgorithm(int algorithm) {
+		this.algorithm = algorithm;
+	}
+	public int getTokensize() {
+		return tokensize;
+	}
+
+	public void setTokensize(int tokensize) {
+		this.tokensize = tokensize;
+	}
+
+	public String execute() throws Exception {
+		// HttpServletRequest req = ServletActionContext.getRequest();
+		// HttpSession session=req.getSession();
+		// //taskname=(String)session.getAttribute("taskname");
+		// String
+		// requsername=(String)session.getAttribute("username");//获取登录用户名作为创建者
+		// System.out.println("current session is: "+ActionContext.getContext().getSession()+"username is:"+requsername);
+		//
+		/*------------------------------------get task info--------------------------------------------*/
+//		System.out.println("开始执行 cretask execute()");
+//		System.out.println("The user'name is ---------- " + username);
+//		System.out.println("The task'name is ---------- " + taskname);
+//		System.out.println("The task's type is ---------- " + taskway);
+		/*------------------------------------upload files into server--------------------------------------------*/
+		srcdir=SaveUploadFile.savefile(fst, fstFileName);
+//		if (srcdir!=null) {
+//			System.out.println("successfullu upload file: " + fstFileName
+//					+ "this is a " + fstContentType + " file.");
+//		}
+//		else{
+//			System.out.println("first upload fail");
+//		}
+		//upload second file
+		trgdir=SaveUploadFile.savefile(sec, secFileName);
+//		if (trgdir!=null) {
+//			System.out.println("successfullu upload file: " + secFileName
+//					+ "this is a " + secContentType + " file.");
+//		}
+//		else{
+//			System.out.println("second upload fail");
+//		}
+
+		/*-------------------------- read files based on the type of files, java or text---------------------------------*/
+		cr=new contentReader();
+		String Content1=cr.readerManage(taskway,fst,srcdir);
+		System.out.println("-------------------------content of first file is: \n"+Content1);
+		String Content2=cr.readerManage(taskway,sec,trgdir);
+		System.out.println("-------------------------content of second file is: \n"+Content2);
+		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
+		// return result include largest value, similarity, result,
+		//string[3]={similarity,details,fst,sec}
+		//string[3] mixResult=compareTool(Content1,Content2,taskway)
+//		String[] mixResult=compareManager.compareTool(Content1, Content2, taskway);
+		// store task into database with taskname files directory and result
+		taskBean=new Task();
+		taskBean.setTaskname(taskname);
+		taskBean.setResult("result");
+		taskBean.setSrcdir(srcdir);
+		taskBean.setTrgdir(trgdir);
+		taskBean.setAlgorithm(taskContentProcess.judgeAlgorithm(algorithm));
+		taskBean.setTaskway(taskContentProcess.judgeTaskWay(taskway));
+		taskBean.setTokensize(taskContentProcess.judgeTokenSize(tokensize));
+		taskBean.setTasktime(new Timestamp(System.currentTimeMillis()));
+		taskBean.setCreator(username);
+		taskService.addTask(taskBean);
+		System.out.println("-------------------------end-----------------------------");
+		setSrccontent(Content1);
+		setTrgcontent(Content2);
+		setSrcfile(srcdir);
+		setTrgfile(trgdir);
+//		setTextresult(mixResult[1]);
+//		setTextsim(mixResult[0]);
+		// matrix...
+
+		return "success";
 	}
 
 	
