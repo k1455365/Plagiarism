@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+a.a4 {
+	text-decoration: none;
+	color: black
+}
+
+a.a4:link {
+	text-decoration: none;
+	color: black
+}
+
+a.a4:hover {
+	text-decoration: none;
+	color: black
+}
+
+a.a4:visited {
+	text-decoration: none;
+	color: black
+}
