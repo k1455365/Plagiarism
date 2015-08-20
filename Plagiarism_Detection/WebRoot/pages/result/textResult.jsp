@@ -6,30 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 <script type="text/javascript" src="/Plagiarism_Detection/js/layout.js"></script>
-<link rel="stylesheet" type="text/css" href="/Plagiarism_Detection/css/result.css" />
+<link rel="stylesheet" type="text/css"
+	href="/Plagiarism_Detection/css/result.css" />
 <title>resultDetail</title>
 <script type="text/javascript">
 	function configTrg() {
-	var flag = document.getElementById('flag').innerHTML;
-	if (flag==0){
-	alert("未选择文本比对");
-	}
-	else{}
+		var flag = document.getElementById('flag').innerHTML;
+		if (flag == 0) {
+			alert("no result");
+		} else {
+		}
 		var trgCode = document.getElementById('trgRaw').innerHTML;
 		trg = new Array;
+		//alert("trg file is: "+trgCode);
 		trg = trgCode.split(" ");
+		//alert("trg after process is: "+trg);
 		trg = matchLine(trg);//the result could be different in different browser
 		sim = new Array;
 		var sim = document.getElementById('simRaw').innerHTML;
+		/* alert("similiar pairs are: "+sim); */
 		simRecord = sim.split("#");
+		/* alert(simRecord); */
 		block = new Array;
-		for ( var i = 1; i < simRecord.length; i++) {
+		for ( var i = 0; i < simRecord.length-1; i++) {
 			block = simRecord[i].split("&amp;");
 			//get startline and endline
+			/* alert(block); */
 			srcBlock = new Array;
 			srcBlock[i] = block[1];
+			/* alert("here"+srcBlock[i] ); */
 			var blockString = srcBlock[i].toString();//变成字符串
 			var blockLen = blockString.length;
+			
 			blockStr = blockString.split("]");
 			blockString = blockStr[0];
 			blockString = blockString.substring(1, blockLen);//截取1到len-1的字符串
@@ -37,8 +45,9 @@
 			line = blockString.split(",");//用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
+			
 			//configure style of source block
-			//alert (simRecord[i]);
+			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
 			for ( var n = (startLine - 1); n < endLine; n++) {
 				trg[n] = "<span style=\"color:red\">•</span>" + trg[n];
 			}
@@ -51,17 +60,21 @@
 			n = endLine - 1;
 			trg[n] = trg[n] + "</a>";
 		}
-		trgFinal = addLinenum(trg);
+		/* alert("trg after process: "+trg); */
+		/* trgFinal = addLinenum(trg); */
+		trgFinal = trg;
 		//-------------------------------deal with the first file-------------------------------
 		var srcCode = document.getElementById('srcRaw').innerHTML;
+	/* 	alert("src file is: "+srcCode); */
 		src = new Array;
 		src = srcCode.split(" ");
 		src = matchLine(src);
 		sim = new Array;
 		var sim = document.getElementById('simRaw').innerHTML;
+		alert(sim);
 		simRecord = sim.split("#");
 		block = new Array;
-		for ( var i = 1; i < simRecord.length; i++) {
+		for ( var i = 0; i < simRecord.length-1; i++) {
 			block = simRecord[i].split("&amp;");
 			// get startline and endline
 			srcBlock = new Array;
@@ -70,16 +83,21 @@
 			var blockLen = blockString.length;
 			blockStr = blockString.split("]");
 			blockString = blockStr[0];
+			alert(blockLen);
 			blockString = blockString.substring(1, blockLen);//截取1到len-1的字符串
+			
 			line = new Array;
+			
 			line = blockString.split(",");// 用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
+			alert ("Start line is: "+startLine+" and endline is: "+endLine);
 			// configure style of target block
 			for ( var n = (startLine - 1); n < endLine; n++) {
 				src[n] = "<span style=\"color:red\">•</span>" + src[n];
 			}
 			m = startLine - 1;
+			alert(m);
 			src[m] = "<a href=\"#B" + i + "\"class=\"a4"
 					+ "\" onclick=\"blendent(" + i
 					+ ")\" onmouseover=\"change(" + i
@@ -88,7 +106,8 @@
 			m = endLine - 1;
 			src[m] = src[m] + "</a>";
 		}
-		srcFinal = addLinenum(src);//and line num for code
+		/* srcFinal = addLinenum(src); *///and line num for code
+		srcFinal =src;
 		/* get basic information of those two file */
 		var simResult = document.getElementById('simResult').innerHTML;
 		var trgFile = document.getElementById('trgFile').innerHTML;
@@ -114,8 +133,8 @@
 				+ "<p class=\"p_data\" >相似度："
 				+ simResult
 				+ "</p><p class=\"return\"><a href=\"#\"class=\"white\" onclick=\"showTable()\">"
-				+"<img alt=\"\" src=\"/webcmp/images/table.png\" />查看详细相似对</a>"
-				+"<span>&nbsp</span><a class=\"white\" href=\"/webcmp/taskmgr/SearchResult.action?fileid=${fileid}&taskid=${taskid}&srcfile=${srcfile}&searchFilename=${searchFilename}&searchcompresim=${searchcompresim}\">"
+				+ "<img alt=\"\" src=\"/webcmp/images/table.png\" />查看详细相似对</a>"
+				+ "<span>&nbsp</span><a class=\"white\" href=\"\">"
 				+ "<img alt=\"\" src=\"/webcmp/images/back.png\" /> 返回</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">检测文件名：</td>"
 				+ "<td class=\"td_midData\">"
 				+ srcFile
@@ -127,53 +146,43 @@
 				+ "</div></td><td class=\"td_code\" colspan=\"2\"><div style=\"width: "+width+"px;\">"
 				+ trgFinal + "</div></td></tr></table></body></html>";
 		document.writeln(decoratedPage);
-		sim=createTable(sim);
+		sim = createTable(sim);
 	}
 </script>
 </head>
 
 <body onload="configTrg()">
-	&nbsp;	
-	<form id="form_testresult"
-		action="/webcmp/taskmgr/ShowTextResult.action">
-	<!-- flag获取 -->
-			<div id="flag" style="display:none">
-				<s:property value="textcompareflag" />
-		</div>
+	<!-- get the type of task -->
+	<div id="flag" style="display:none">
+		<s:property value="taskway" />
+	</div>
 	<!-- 源代码获取 -->
-
-		<div id="srcRaw" style="display:none">
-			<pre>
+	<div id="srcRaw" style="display:none">
+		<pre>
 				<s:property value="srccontent" />
 			</pre>
-		</div>
-		<!-- 目标代码获取 -->
-		<div id="trgRaw" style="display:none">
-			<pre>
+	</div>
+	<!-- 目标代码获取 -->
+	<div id="trgRaw" style="display:none">
+		<pre>
 				<s:property value="trgcontent" />
 			</pre>
-		</div>
-		<!-- 相似关系获取 -->
-		<div id="simRaw" style="display:none">
-			<s:property value="Textresult" />
-		</div>
-		<!-- 相似关系获取record -->
-		<div id="recordRaw" style="display:none">
-			<s:property value="simlist" />
-		</div>
-		<!-- srcFile -->
-		<div id="srcFile" style="display:none">
-			<s:property value="srcfile" />
-		</div>
-		<!-- trgFile -->
-		<div id="trgFile" style="display:none">
-			<s:property value="trgfile" />
-		</div>
-		<!-- simResult -->
-		<div id="simResult" style="display:none">
-			<s:property value="textsim" />
-		</div>
-	</form>
+	</div>
+	<!-- 相似关系获取 -->
+	<div id="simRaw" style="display:none"><s:property value="Textresult" />
+	</div>
+	<!-- srcFileName -->
+	<div id="srcFile" style="display:none">
+		<s:property value="srcfile" />
+	</div>
+	<!-- trgFileName -->
+	<div id="trgFile" style="display:none">
+		<s:property value="trgfile" />
+	</div>
+	<!-- simResult -->
+	<div id="simResult" style="display:none">
+		<s:property value="textsim" />
+	</div>
 </body>
 
 </html>
