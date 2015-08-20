@@ -120,7 +120,7 @@
 		height: "+height+"px;*/
 		var width = layout();
 		var decoratedPage = "<html><head>"
-				+ "<script src=\"/webcmp/js/jquery-1.8.0.js\"></s"+"cript>"
+				+ "<script src=\"/Plagiarism_Detection/js/jquery-1.8.0.js\"></s"+"cript>"
 				+ "<script type=\"text/javascript\" src=\"/Plagiarism_Detection/js/layout.js\"></s"+"cript>"
 				+ "<script type=\"text/javascript\"></s"+"cript>"
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/a1.css\" />"
@@ -128,17 +128,17 @@
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/a3.css\" />"
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/a4.css\" />"
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/result.css\" /></head>"
-				+ "<body ><table><tr><td class=\"td_top\" colspan=\"4\" ><p class=\"p_title\" >文本同源性比对结果"
+				+ "<body ><table><tr><td class=\"td_top\" colspan=\"4\" ><p class=\"p_title\" >Text Plagiarism Detection Result"
 				+ "</p>"
-				+ "<p class=\"p_data\" >相似度："
+				+ "<p class=\"p_data\" >score："
 				+ simResult
 				+ "</p><p class=\"return\"><a href=\"#\"class=\"white\" onclick=\"showTable()\">"
-				+ "<img alt=\"\" src=\"/webcmp/images/table.png\" />查看详细相似对</a>"
+				+ "<img alt=\"\" src=\"/webcmp/images/table.png\" />Check the similiar pairs</a>"
 				+ "<span>&nbsp</span><a class=\"white\" href=\"\">"
-				+ "<img alt=\"\" src=\"/webcmp/images/back.png\" /> 返回</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">检测文件名：</td>"
+				+ "<img alt=\"\" src=\"/webcmp/images/back.png\" /> Back</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">File Name：</td>"
 				+ "<td class=\"td_midData\">"
 				+ srcFile
-				+ "</td><td class=\"td_midTitle\">样本文件名:</td>"
+				+ "</td><td class=\"td_midTitle\">File Name:</td>"
 				+ "<td class=\"td_midData\">"
 				+ trgFile
 				+ "</td></tr><tr><td colspan=\"2\"><div style=\"width: "+width+"px;\">"
