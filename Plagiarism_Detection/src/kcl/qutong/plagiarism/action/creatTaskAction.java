@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 
 import kcl.qutong.plagiarism.dao.pojo.Task;
 import kcl.qutong.plagiarism.dao.pojo.User;
+import kcl.qutong.plagiarism.entity.SmithWaterman.SmithWatermanArray;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
 import kcl.qutong.plagiarism.util.SaveUploadFile;
@@ -44,15 +45,19 @@ public class creatTaskAction extends ActionSupport {
 	private User u;
 	private int algorithm;
 	private int tokensize;
-	//compare needed
+	// compare needed
 	private contentReader cr;
-//result set
+	// result set
 	private String srccontent;
 	private String trgcontent;
 	private String srcfile;
 	private String trgfile;
 	private String Textresult;
 	private String textsim;
+	String[] mixResult;
+	String AlignmentA;
+	String AlignmentB;
+
 	public String getSrcdir() {
 		return srcdir;
 	}
@@ -76,7 +81,6 @@ public class creatTaskAction extends ActionSupport {
 	public void setTaskBean(Task taskBean) {
 		this.taskBean = taskBean;
 	}
-
 
 	public TaskService getTaskService() {
 		return taskService;
@@ -173,6 +177,7 @@ public class creatTaskAction extends ActionSupport {
 	public void setTaskway(int taskway) {
 		this.taskway = taskway;
 	}
+
 	public String getSrccontent() {
 		return srccontent;
 	}
@@ -221,8 +226,8 @@ public class creatTaskAction extends ActionSupport {
 		this.textsim = textsim;
 	}
 
-//getter setter for result
-	
+	// getter setter for result
+
 	public int getAlgorithm() {
 		return algorithm;
 	}
@@ -230,6 +235,7 @@ public class creatTaskAction extends ActionSupport {
 	public void setAlgorithm(int algorithm) {
 		this.algorithm = algorithm;
 	}
+
 	public int getTokensize() {
 		return tokensize;
 	}
@@ -238,51 +244,42 @@ public class creatTaskAction extends ActionSupport {
 		this.tokensize = tokensize;
 	}
 
-	public String execute() throws Exception {
-		// HttpServletRequest req = ServletActionContext.getRequest();
-		// HttpSession session=req.getSession();
-		// //taskname=(String)session.getAttribute("taskname");
-		// String
-		// requsername=(String)session.getAttribute("username");//获取登录用户名作为创建者
-		// System.out.println("current session is: "+ActionContext.getContext().getSession()+"username is:"+requsername);
-		//
-		/*------------------------------------get task info--------------------------------------------*/
-//		System.out.println("开始执行 cretask execute()");
-//		System.out.println("The user'name is ---------- " + username);
-//		System.out.println("The task'name is ---------- " + taskname);
-//		System.out.println("The task's type is ---------- " + taskway);
-		/*------------------------------------upload files into server--------------------------------------------*/
-		srcdir=SaveUploadFile.savefile(fst, fstFileName);
-//		if (srcdir!=null) {
-//			System.out.println("successfullu upload file: " + fstFileName
-//					+ "this is a " + fstContentType + " file.");
-//		}
-//		else{
-//			System.out.println("first upload fail");
-//		}
-		//upload second file
-		trgdir=SaveUploadFile.savefile(sec, secFileName);
-//		if (trgdir!=null) {
-//			System.out.println("successfullu upload file: " + secFileName
-//					+ "this is a " + secContentType + " file.");
-//		}
-//		else{
-//			System.out.println("second upload fail");
-//		}
+	public String getAlignmentA() {
+		return AlignmentA;
+	}
 
+	public void setAlignmentA(String AlignmentA) {
+		this.AlignmentA = AlignmentA;
+	}
+
+	public String getAlignmentB() {
+		return AlignmentB;
+	}
+
+	public void setAlignmentB(String AlignmentB) {
+		this.AlignmentB = AlignmentB;
+	}
+
+	public String execute() throws Exception {
+		srcdir = SaveUploadFile.savefile(fst, fstFileName);
+		trgdir = SaveUploadFile.savefile(sec, secFileName);
 		/*-------------------------- read files based on the type of files, java or text---------------------------------*/
-		cr=new contentReader();
-		String Content1=cr.readerManage(taskway,fst,srcdir);
-		System.out.println("-------------------------content of first file is: \n"+Content1);
-		String Content2=cr.readerManage(taskway,sec,trgdir);
-		System.out.println("-------------------------content of second file is: \n"+Content2);
+		cr = new contentReader();
+		String Content1 = cr.readerManage(taskway, fst, srcdir);
+		System.out
+				.println("-------------------------content of first file is: \n"
+						+ Content1);
+		String Content2 = cr.readerManage(taskway, sec, trgdir);
+		System.out
+				.println("-------------------------content of second file is: \n"
+						+ Content2);
 		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
 		// return result include largest value, similarity, result,
-		//string[3]={similarity,details,fst,sec}
-		//string[3] mixResult=compareTool(Content1,Content2,taskway)
-//		String[] mixResult=compareManager.compareTool(Content1, Content2, taskway);
+		compareManager cm=new compareManager();
+		mixResult = cm.compareTool(Content1, Content2, taskway);
+
 		// store task into database with taskname files directory and result
-		taskBean=new Task();
+		taskBean = new Task();
 		taskBean.setTaskname(taskname);
 		taskBean.setResult("result");
 		taskBean.setSrcdir(srcdir);
@@ -293,17 +290,24 @@ public class creatTaskAction extends ActionSupport {
 		taskBean.setTasktime(new Timestamp(System.currentTimeMillis()));
 		taskBean.setCreator(username);
 		taskService.addTask(taskBean);
-		System.out.println("-------------------------end-----------------------------");
+		System.out
+				.println("-------------------------end-----------------------------");
 		setSrccontent(Content1);
 		setTrgcontent(Content2);
 		setSrcfile(srcdir);
 		setTrgfile(trgdir);
-//		setTextresult(mixResult[1]);
-//		setTextsim(mixResult[0]);
+		setTextsim(mixResult[0]);
+		setTextresult(mixResult[1]);
+		// token task
+		setAlignmentA(mixResult[2]);
+		setAlignmentB(mixResult[3]);
 		// matrix...
+		if (taskway == 3) {
+			return "token";
+		} else {
+			return "success";
+		}
 
-		return "success";
 	}
 
-	
 }
