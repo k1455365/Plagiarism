@@ -17,12 +17,11 @@ public class BasicSmithWaterman {
 	private int r;// replace
 	String[] X;
 	String[] Y;
-	// char[] X;
-	// char[] Y;
 	List<String> preX = new ArrayList<String>();
 	List<String> preY = new ArrayList<String>();
 	int[][] s;// score matrix
 	point max = new point();
+	point origil=new point();
 	cell backPoint = new cell();
 	List<cell> path = new ArrayList<cell>();
 	cell[] backTrace;
@@ -60,8 +59,6 @@ public class BasicSmithWaterman {
 		Y = preY.toArray(new String[1]);
 		// start from 1 is because previous work hence the result could be
 		// negative
-		System.out.println("m=" + m);
-		System.out.println("n=" + n);
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
 				System.out.println("i=" + i + " j=" + j);
@@ -105,40 +102,19 @@ public class BasicSmithWaterman {
 			} else {
 				i--;
 			}
+			origil.setX(i);
+			origil.setY(j);
 		}
 	}
-
-	void printMatrix() {
-		System.out.print("D =       ");
-		for (int i = 0; i < Y.length; i++) {
-			System.out.print(String.format("%4c ", Y[i]));
-		}
-		System.out.println();
-		for (int i = 0; i < X.length + 1; i++) {
-			if (i > 0) {
-				System.out.print(String.format("%4c ", X[i - 1]));
-			} else {
-				System.out.print("     ");
-			}
-			for (int j = 0; j < Y.length + 1; j++) {
-				System.out.print(String.format("%4d ", s[i][j]));
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] a) {
-		String a1 = "a b c x d e f g h i y m z j l u k p q s j t u v";
-		String b = "a b c d e f g h i j k l m n o p q r s j t u v";
-		// String a1="abcxdefghiymzjlukpqsjtuv";
-		// String b="abcdefghijklmnopqrsjtuv";
-		// char[] seqA =a1.toCharArray();
-		// char[] seqB =b.toCharArray();
-		String[] seqA = a1.split(" ");
-		String[] seqB = b.split(" ");
-		BasicSmithWaterman aa = new BasicSmithWaterman();
-		aa.calScoreMatrix(seqA, seqB);
-		aa.traceback();
+	public String[] result(String src,String trg){
+		System.out.println("enter basic smithwaterman");
+		String [] mix =new String[4];
+		calScoreMatrix(src.split(" "),trg.split(" "));
+		traceback();
+		mix[0]=String.valueOf(max.getValue());
+		mix[1]="["+origil.getX()+","+max.getX()+"]&["+origil.getY()+","+max.getY()+"]#";
+		mix[2]=src;
+		mix[3]=trg;
+		return mix;
 	}
 }
