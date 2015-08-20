@@ -88,6 +88,12 @@ function matchLine(code) {
 	}
 	return code;
 }
+//delete useless part of file directory
+function filename(filename){
+	names=filename.split("/");
+	name=names[names.length-1];
+	return name;
+}
 function blackOther(x){
 	//var sum=window.document.getElementsTagName("");
 	//alert(sum.length);回复颜色；总的超链接对数
@@ -160,9 +166,16 @@ function addLinenum(code) {
 			codeFinal = codeFinal + temp;
 		}
 	}
+	return codeFinal;
+}
+function myToString(code) {
+	var codeFinal = "&nbsp";
+	for ( var x = 0; x < code.length; x++) {
+			var temp = code[x].toString();
+			codeFinal = codeFinal+ " " + temp;
+	}
 	return codeFinal
 }
-
 function createTable(a){
 window.table=a;
 //return table;

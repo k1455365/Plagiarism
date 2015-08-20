@@ -49,7 +49,7 @@
 			//configure style of source block
 			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
 			for ( var n = (startLine - 1); n < endLine; n++) {
-				trg[n] = "<span style=\"color:red\">•</span>" + trg[n];
+				/* trg[n] = "<span style=\"color:red\">•</span>" + trg[n]; */
 			}
 			n = startLine - 1;
 			trg[n] = "<a  id=\"B" + i + "\"class=\"a4"
@@ -62,7 +62,7 @@
 		}
 		/* alert("trg after process: "+trg); */
 		/* trgFinal = addLinenum(trg); */
-		trgFinal = trg;
+		trgFinal = myToString(trg);
 		//-------------------------------deal with the first file-------------------------------
 		var srcCode = document.getElementById('srcRaw').innerHTML;
 	/* 	alert("src file is: "+srcCode); */
@@ -71,7 +71,7 @@
 		src = matchLine(src);
 		sim = new Array;
 		var sim = document.getElementById('simRaw').innerHTML;
-		alert(sim);
+		/* alert(sim); */
 		simRecord = sim.split("#");
 		block = new Array;
 		for ( var i = 0; i < simRecord.length-1; i++) {
@@ -83,7 +83,7 @@
 			var blockLen = blockString.length;
 			blockStr = blockString.split("]");
 			blockString = blockStr[0];
-			alert(blockLen);
+			/* alert(blockLen); */
 			blockString = blockString.substring(1, blockLen);//截取1到len-1的字符串
 			
 			line = new Array;
@@ -91,13 +91,14 @@
 			line = blockString.split(",");// 用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
-			alert ("Start line is: "+startLine+" and endline is: "+endLine);
+			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
 			// configure style of target block
 			for ( var n = (startLine - 1); n < endLine; n++) {
-				src[n] = "<span style=\"color:red\">•</span>" + src[n];
+			/* alert (src[n]); */
+				/* src[n] = "<span style=\"color:red\">•</span>" + src[n]; */
 			}
 			m = startLine - 1;
-			alert(m);
+			/* alert(m); */
 			src[m] = "<a href=\"#B" + i + "\"class=\"a4"
 					+ "\" onclick=\"blendent(" + i
 					+ ")\" onmouseover=\"change(" + i
@@ -107,7 +108,8 @@
 			src[m] = src[m] + "</a>";
 		}
 		/* srcFinal = addLinenum(src); *///and line num for code
-		srcFinal =src;
+		/* alert(src); */
+		srcFinal =myToString(src);
 		/* get basic information of those two file */
 		var simResult = document.getElementById('simResult').innerHTML;
 		var trgFile = document.getElementById('trgFile').innerHTML;
@@ -119,6 +121,8 @@
 		alert(height);
 		height: "+height+"px;*/
 		var width = layout();
+		srcFile=filename(srcFile);
+		trgFile=filename(trgFile);
 		var decoratedPage = "<html><head>"
 				+ "<script src=\"/Plagiarism_Detection/js/jquery-1.8.0.js\"></s"+"cript>"
 				+ "<script type=\"text/javascript\" src=\"/Plagiarism_Detection/js/layout.js\"></s"+"cript>"
