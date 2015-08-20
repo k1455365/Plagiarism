@@ -61,7 +61,7 @@ public class BasicSmithWaterman {
 		// negative
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
-				System.out.println("i=" + i + " j=" + j);
+//				System.out.println("i=" + i + " j=" + j);
 				if (X[i].equalsIgnoreCase(Y[j])) {
 					// if (X[i-1]==Y[j-1]) {
 					s[i][j] = s[i - 1][j - 1] + h;
