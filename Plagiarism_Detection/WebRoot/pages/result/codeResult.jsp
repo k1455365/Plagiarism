@@ -12,18 +12,20 @@
 	function configTrg() {
 	var flag = document.getElementById('flag').innerHTML;
 	if (flag==0){
-	alert("未选择文本比对");
+	alert("error");
 	}
 	else{}
 		var trgCode = document.getElementById('trgRaw').innerHTML;
 		trg = new Array;
+		/* alert("trg"+trg); */
 		trg = trgCode.split("\n");
 		trg = matchLine(trg);
 		sim = new Array;
 		var sim = document.getElementById('simRaw').innerHTML;
+		/* alert("sim"+sim); */
 		simRecord = sim.split("#");
 		block = new Array;
-		for ( var i = 1; i < simRecord.length; i++) {
+		for ( var i = 0; i < simRecord.length-1; i++) {
 			block = simRecord[i].split("&amp;");
 			//get startline and endline
 			srcBlock = new Array;
@@ -38,7 +40,7 @@
 			startLine = line[0];
 			endLine = line[1];
 			//configure style of source block
-			alert (simRecord[i]);
+			/* alert (simRecord[i]); */
 			for ( var n = (startLine - 1); n < endLine; n++) {
 				trg[n] = "<span style=\"color:red\">•</span>" + trg[n];
 			}
@@ -61,7 +63,7 @@
 		var sim = document.getElementById('simRaw').innerHTML;
 		simRecord = sim.split("#");
 		block = new Array;
-		for ( var i = 1; i < simRecord.length; i++) {
+		for ( var i = 0; i < simRecord.length-1; i++) {
 			block = simRecord[i].split("&amp;");
 			// get startline and endline
 			srcBlock = new Array;
@@ -91,8 +93,13 @@
 		srcFinal = addLinenum(src);//and line num for code
 		/* get basic information of those two file */
 		var simResult = document.getElementById('simResult').innerHTML;
+		/* alert("simResult"+simResult); */
 		var trgFile = document.getElementById('trgFile').innerHTML;
 		var srcFile = document.getElementById('srcFile').innerHTML;
+			/* alert("trgFile"+trgFile);
+			alert("srcFile"+srcFile); */
+		srcFile=filename(srcFile);
+		trgFile=filename(trgFile);
 		/*var rect=layout();
 		var width=rect[0];
 		var height=rect[1];
@@ -101,7 +108,7 @@
 		height: "+height+"px;*/
 		var width = layout();
 		var decoratedPage = "<html><head>"
-				+ "<script src=\"/webcmp/js/jquery-1.8.0.js\"></s"+"cript>"
+				+ "<script src=\"/Plagiarism_Detection/js/jquery-1.8.0.js\"></s"+"cript>"
 				+ "<script type=\"text/javascript\" src=\"/Plagiarism_Detection/js/layout.js\"></s"+"cript>"
 				+ "<script type=\"text/javascript\"></s"+"cript>"
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/a1.css\" />"
@@ -109,17 +116,17 @@
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/a3.css\" />"
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/a4.css\" />"
 				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Plagiarism_Detection/css/result.css\" /></head>"
-				+ "<body ><table><tr><td class=\"td_top\" colspan=\"4\" ><p class=\"p_title\" >文本同源性比对结果"
+				+ "<body ><table><tr><td class=\"td_top\" colspan=\"4\" ><p class=\"p_title\" >Code Plagiarism Detection Result"
 				+ "</p>"
-				+ "<p class=\"p_data\" >相似度："
+				+ "<p class=\"p_data\" >Score："
 				+ simResult
 				+ "</p><p class=\"return\"><a href=\"#\"class=\"white\" onclick=\"showTable()\">"
-				+"<img alt=\"\" src=\"/webcmp/images/table.png\" />查看详细相似对</a>"
-				+"<span>&nbsp</span><a class=\"white\" href=\"/webcmp/taskmgr/SearchResult.action?fileid=${fileid}&taskid=${taskid}&srcfile=${srcfile}&searchFilename=${searchFilename}&searchcompresim=${searchcompresim}\">"
-				+ "<img alt=\"\" src=\"/webcmp/images/back.png\" /> 返回</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">检测文件名：</td>"
+				+"<img alt=\"\" src=\"/webcmp/images/table.png\" />Check the similiar pairs</a>"
+				+"<span>&nbsp</span><a class=\"white\" href=\"\">"
+				+ "<img alt=\"\" src=\"/webcmp/images/back.png\" /> Back</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">File Name：</td>"
 				+ "<td class=\"td_midData\">"
 				+ srcFile
-				+ "</td><td class=\"td_midTitle\">样本文件名:</td>"
+				+ "</td><td class=\"td_midTitle\">File Name：</td>"
 				+ "<td class=\"td_midData\">"
 				+ trgFile
 				+ "</td></tr><tr><td colspan=\"2\"><div style=\"width: "+width+"px;\">"
@@ -134,8 +141,6 @@
 
 <body onload="configTrg()">
 	&nbsp;	
-	<form id="form_testresult"
-		action="/webcmp/taskmgr/ShowTextResult.action">
 	<!-- flag获取 -->
 			<div id="flag" style="display:none">
 				<s:property value="taskway" />
@@ -143,19 +148,16 @@
 	<!-- 源代码获取 -->
 
 		<div id="srcRaw" style="display:none">
-			<pre>
-				<s:property value="srccontent" />
+			<pre><s:property value="srccontent" />
 			</pre>
 		</div>
 		<!-- 目标代码获取 -->
 		<div id="trgRaw" style="display:none">
-			<pre>
-				<s:property value="trgcontent" />
+			<pre><s:property value="trgcontent" />
 			</pre>
 		</div>
 		<!-- 相似关系获取 -->
-		<div id="simRaw" style="display:none">
-			<s:property value="Textresult" />
+		<div id="simRaw" style="display:none"><s:property value="Textresult" />
 		</div>
 		<!-- 相似关系获取record -->
 		<div id="recordRaw" style="display:none">
@@ -173,7 +175,6 @@
 		<div id="simResult" style="display:none">
 			<s:property value="textsim" />
 		</div>
-	</form>
 </body>
 
 </html>

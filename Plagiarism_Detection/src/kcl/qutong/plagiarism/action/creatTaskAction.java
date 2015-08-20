@@ -292,7 +292,7 @@ public class creatTaskAction extends ActionSupport {
 		taskService.addTask(taskBean);
 		System.out
 				.println("-------------------------end-----------------------------");
-		setSrccontent(Content1);
+		setSrccontent(Content1);//without process currect version hence using the original content directly
 		setTrgcontent(Content2);
 		setSrcfile(srcdir);
 		setTrgfile(trgdir);

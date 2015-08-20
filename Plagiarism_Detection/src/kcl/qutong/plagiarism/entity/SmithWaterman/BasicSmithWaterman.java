@@ -26,16 +26,16 @@ public class BasicSmithWaterman {
 	List<cell> path = new ArrayList<cell>();
 	cell[] backTrace;
 
-	public String[] result(String src, String trg) {
+	public String[] result(String[] srcArray, String[] trgArray) {
 		System.out.println("enter basic smithwaterman");
 		String[] mix = new String[4];
-		calScoreMatrix(src.split(" "), trg.split(" "));
+		calScoreMatrix(srcArray, trgArray);
 		traceback();
 		mix[0] = String.valueOf(max.getValue());
 		mix[1] = "[" + origil.getX() + "," + max.getX() + "]&[" + origil.getY()
 				+ "," + max.getY() + "]#";
-		mix[2] = src;
-		mix[3] = trg;
+		mix[2] = "src";
+		mix[3] = "trg";
 		return mix;
 	}
 

@@ -19,12 +19,17 @@ public class compareManager {
 
 			System.out
 					.println("enter text compare using basic smith waterman algorithm");
-			mixResult = bsw.result(srcContent, trgContent);
+			String[] srcArray =srcContent.split(" ");
+			String[] trgArray =trgContent.split(" ");
+			mixResult = bsw.result(srcArray, trgArray);
 			break;
 		}
 		case 2: {
 			System.out
 					.println("enter code compare using basic smith waterman algorithm");
+			String[] srcArray =srcContent.split("\n");
+			String[] trgArray =trgContent.split("\n");
+			mixResult = bsw.result(srcArray, trgArray);
 			break;
 		}
 		case 3: {
