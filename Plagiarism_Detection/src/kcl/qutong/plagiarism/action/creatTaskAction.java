@@ -275,8 +275,8 @@ public class creatTaskAction extends ActionSupport {
 						+ Content2);
 		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
 		// return result include largest value, similarity, result,
-		compareManager cm=new compareManager();
-		mixResult = cm.compareTool(Content1, Content2, taskway);
+		compareManager cm = new compareManager();
+		mixResult = cm.compareTool(Content1, Content2, taskway, algorithm);
 
 		// store task into database with taskname files directory and result
 		taskBean = new Task();
@@ -296,16 +296,20 @@ public class creatTaskAction extends ActionSupport {
 		setTrgcontent(Content2);
 		setSrcfile(srcdir);
 		setTrgfile(trgdir);
-		setTextsim(mixResult[0]);
-		setTextresult(mixResult[1]);
-		// token task
+		setTextsim(mixResult[0]);//similiar pairs
+		setTextresult(mixResult[1]);//score between two pages
+		// token task special value
 		setAlignmentA(mixResult[2]);
 		setAlignmentB(mixResult[3]);
-		// matrix...
-		if (taskway == 3) {
+		// return result to corresponding pages
+		if (taskway == 1) {
+			return "text";
+		} else if (taskway == 2) {
+			return "code";
+		} else if (taskway == 3) {
 			return "token";
 		} else {
-			return "success";
+			return ERROR;
 		}
 
 	}

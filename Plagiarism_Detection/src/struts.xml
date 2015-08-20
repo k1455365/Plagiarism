@@ -32,7 +32,9 @@
 	<package name="task" extends="struts-default">
 		<action name="creTaskAction" class="BeancreTaskAction">
 			<!-- <result name="success">error.jsp</result> -->
-			<result name="success">/pages/result/textResult.jsp</result>
+			<result name="test">/pages/result/testResult.jsp</result>
+			<result name="text">/pages/result/textResult.jsp</result>
+			<result name="code">/pages/result/codeResult.jsp</result>
 			<result name="token">/pages/result/tokenResult.jsp</result>
 			<result name="error">error.jsp</result>
 			<result name="cancel" type="redirectAction">Welcome</result>

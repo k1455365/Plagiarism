@@ -21,10 +21,23 @@ public class BasicSmithWaterman {
 	List<String> preY = new ArrayList<String>();
 	int[][] s;// score matrix
 	point max = new point();
-	point origil=new point();
+	point origil = new point();
 	cell backPoint = new cell();
 	List<cell> path = new ArrayList<cell>();
 	cell[] backTrace;
+
+	public String[] result(String src, String trg) {
+		System.out.println("enter basic smithwaterman");
+		String[] mix = new String[4];
+		calScoreMatrix(src.split(" "), trg.split(" "));
+		traceback();
+		mix[0] = String.valueOf(max.getValue());
+		mix[1] = "[" + origil.getX() + "," + max.getX() + "]&[" + origil.getY()
+				+ "," + max.getY() + "]#";
+		mix[2] = src;
+		mix[3] = trg;
+		return mix;
+	}
 
 	public void calScoreMatrix(String[] srcArray, String[] trgArray) {
 		// public void calScoreMatrix(char[] srcArray, char[] trgArray) {
@@ -47,12 +60,12 @@ public class BasicSmithWaterman {
 			preY.add(trgArray[j]);
 			s[0][j] = 0;
 		}
-		
-		for (int i = 0; i < m+1; i++) {
+
+		for (int i = 0; i < m + 1; i++) {
 			s[i][0] = 0;
 		}
 		// make the first row is zero
-		for (int j = 0; j < n+1; j++) {
+		for (int j = 0; j < n + 1; j++) {
 			s[0][j] = 0;
 		}
 		X = preX.toArray(new String[1]);
@@ -61,7 +74,7 @@ public class BasicSmithWaterman {
 		// negative
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
-//				System.out.println("i=" + i + " j=" + j);
+				// System.out.println("i=" + i + " j=" + j);
 				if (X[i].equalsIgnoreCase(Y[j])) {
 					// if (X[i-1]==Y[j-1]) {
 					s[i][j] = s[i - 1][j - 1] + h;
@@ -106,15 +119,5 @@ public class BasicSmithWaterman {
 			origil.setY(j);
 		}
 	}
-	public String[] result(String src,String trg){
-		System.out.println("enter basic smithwaterman");
-		String [] mix =new String[4];
-		calScoreMatrix(src.split(" "),trg.split(" "));
-		traceback();
-		mix[0]=String.valueOf(max.getValue());
-		mix[1]="["+origil.getX()+","+max.getX()+"]&["+origil.getY()+","+max.getY()+"]#";
-		mix[2]=src;
-		mix[3]=trg;
-		return mix;
-	}
+
 }
