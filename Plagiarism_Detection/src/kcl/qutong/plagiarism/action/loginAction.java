@@ -3,7 +3,11 @@ package kcl.qutong.plagiarism.action;
 import kcl.qutong.plagiarism.service.UserService;
 import kcl.qutong.plagiarism.util.MD5;
 import com.opensymphony.xwork2.ActionSupport;
-
+/**
+ * This method make response to login request
+ * @author qutong
+ *
+ */
 public class loginAction extends ActionSupport {
 	private UserService userService;
 	private String username;
@@ -35,23 +39,10 @@ public class loginAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		System.out.println("开始执行execute()");
-		// two method get value of parameters in session
-		// Map<String, Object> map = ActionContext.getContext().getSession();
-		// String username = (String) map.get("username");
-		// String passwd = (String) map.get("passwd");
-		// second method
-		// ActionContext ctx = ActionContext.getContext();
-		// String username1 = (String) ctx.getSession().get("username");
-		// String passwd1 = (String) ctx.getSession().get("passwd");
-		// third one
+		System.out.println("start execute()");
 		System.out.println("The user'name is ---------- " + username);
 		System.out.println("The user'passwd is ---------- " + password);
-		// System.out.println("The user'name is ---------- " + username1);
-		// System.out.println("The user'passwd is ---------- " + passwd1);
-		if (username.equals("") || password.equals("")) {// using ==null dosen‘t
-															// work here
-															// sometime
+		if (username.equals("") || password.equals("")) {
 			System.out.println("username or password is empty");
 			return ERROR;
 		} else {
