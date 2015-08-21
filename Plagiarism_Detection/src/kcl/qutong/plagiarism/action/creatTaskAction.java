@@ -22,7 +22,8 @@ import kcl.qutong.plagiarism.util.taskContentProcess;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * 
+ * This action used to make response to creattask and this is the core class
+ * it resturn corresponding value depend on diff task
  * @author qutong
  * 
  */
