@@ -17,7 +17,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import kcl.qutong.plagiarism.dao.pojo.Task;
 import kcl.qutong.plagiarism.service.TaskService;
 import kcl.qutong.plagiarism.service.UserService;
-
+/**
+ * return task related information to pages
+ * @author qutong
+ *
+ */
 public class showTaskAction extends ActionSupport{
 	private TaskService taskService;
 	private UserService userService;
