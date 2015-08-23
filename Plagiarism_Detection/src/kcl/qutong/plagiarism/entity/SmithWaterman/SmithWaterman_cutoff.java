@@ -29,20 +29,31 @@ public class SmithWaterman_cutoff extends BasicSmithWaterman {
 	cell Mij = new cell();
 	List<cell> candidateSet = new ArrayList<cell>();
 	cell[] backTrace;
+	SmithWaterman_overlap swo = new SmithWaterman_overlap();
 
 	public String[] result(String[] srcArray, String[] trgArray, int threshold) {
 		cell start;
 		cell end;
-		System.out.println("enter basic smithwaterman");
-		String[] mix = new String[4];
-		calScoreMatrix(srcArray, trgArray, threshold);
-		System.out.println("after calculation");
+		String old_pairs = "";
 		String pairs = "";
-		System.out.println(candidateSet.size());
-		for (int n = 0; n < candidateSet.size(); n++) {
+		calScoreMatrix(srcArray, trgArray, threshold);
+		System.out.println("enter smithwaterman");
+		for (int n = 0; n < candidateSet.size()/2; n++) {
 			start = candidateSet.get(2 * n);
 			end = candidateSet.get(2 * n + 1);
-//			System.out.println(pairs);
+			System.out.println(old_pairs);
+			old_pairs = old_pairs + "[" + start.getX() + "," + end.getX() + "]&["
+					+ start.getY() + "," + end.getY() + "]#";
+		}
+		String[] mix = new String[4];
+			
+		// delete useless overlap
+		candidateSet=swo.removeSameOrigil(candidateSet,s);// overlap is allowed,but we need to find pairs with same origil
+		System.out.println("after remove");
+		for (int n = 0; n < candidateSet.size()/2; n++) {
+			start = candidateSet.get(2 * n);
+			end = candidateSet.get(2 * n + 1);
+			System.out.println(pairs);
 			pairs = pairs + "[" + start.getX() + "," + end.getX() + "]&["
 					+ start.getY() + "," + end.getY() + "]#";
 		}
@@ -58,12 +69,12 @@ public class SmithWaterman_cutoff extends BasicSmithWaterman {
 		// public void calScoreMatrix(char[] srcArray, char[] trgArray) {
 		m = srcArray.length;
 		n = trgArray.length;
-		v = threshold = 5;// need to be changed
+		v = threshold = 3;// need to be changed
 		preX.add("0");
 		preY.add("0");
 		h = d = r = 1;
 		max.setValue(0);
-System.out.println("m: "+m+" n: "+n);
+		System.out.println("m: " + m + " n: " + n);
 		// make the first column is zero
 		s = new int[m + 1][n + 1];
 		M = new int[m + 1][n + 1];
@@ -119,13 +130,13 @@ System.out.println("m: "+m+" n: "+n);
 				// set up candidate set. s will be set zero if its' Mij-Sij>v
 				// M will be choosen when Mij<Sij and Sij>v
 				if (M[i][j] - s[i][j] >= v) {
-					//System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
-					//traceback(s, i, j);
+					// System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
+					// traceback(s, i, j);
 					s[i][j] = 0;// this should after traceback here, coz
-					M[i][j]=0;
-				} else 
-					if(s[i][j]>=v&&M[i][j]<s[i][j]){
-					System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
+					M[i][j] = 0;
+				} else if (s[i][j] >= v && M[i][j] < s[i][j]) {
+					System.out.println("M" + i + "," + j + " is: " + M[i][j]
+							+ " S" + i + "," + j + "is: " + s[i][j]);
 					traceback(s, i, j);// if a state isn't pre-dominated and
 										// larger than v
 				}
@@ -156,11 +167,12 @@ System.out.println("m: "+m+" n: "+n);
 			} else {
 				i--;
 			}
-			origil.setX(i+1);
-			origil.setY(j+1);
-			//state with largest value in the path trace back
+			origil.setX(i + 1);
+			origil.setY(j + 1);
+			// state with largest value in the path trace back
 			if (Mij.getValue() <= s[i][j]) {
-				System.out.println("Mij is: "+Mij.getValue()+"Sij is"+s[i][j]);
+				System.out.println("Mij is: " + Mij.getValue() + "Sij is"
+						+ s[i][j]);
 				Mij.setValue(s[i][j]);
 				Mij.setX(i);
 				Mij.setY(j);
@@ -169,8 +181,8 @@ System.out.println("m: "+m+" n: "+n);
 			}
 		}
 		// 2n will be the position of similarity start and 2n+1 is end
-		System.out.println("similiari pair start with state ("+origil.getX()+","+origil.getY()+")  and end at("+Mij.getX()+","+Mij.getY()+") with ");
-		System.out.println("similiari pair are ("+origil.getX()+","+Mij.getX()+") in X and ("+origil.getY()+","+Mij.getY()+") in Y");
+		// System.out.println("similiari pair start with state ("+origil.getX()+","+origil.getY()+")  and end at("+Mij.getX()+","+Mij.getY()+") with ");
+		// System.out.println("similiari pair are ("+origil.getX()+","+Mij.getX()+") in X and ("+origil.getY()+","+Mij.getY()+") in Y");
 		candidateSet.add(origil);
 		candidateSet.add(Mij);
 	}
