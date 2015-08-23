@@ -8,7 +8,14 @@ public class SmithWaterman_cutoffTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+				//   1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4
+		String a1 = "a b c x d e f g h i y m z j l u k p q s j t u v";
+		String b =  "a b c d e f g h i j k l m n o p q r s j t u v";
+		String[] seqA = a1.split(" ");
+		String[] seqB = b.split(" ");
+		SmithWaterman_cutoff swc=new SmithWaterman_cutoff();
+		String[] a=swc.result(seqA, seqB,5);
+		System.out.println("pairs:"+a[1]);
 	}
 
 }
