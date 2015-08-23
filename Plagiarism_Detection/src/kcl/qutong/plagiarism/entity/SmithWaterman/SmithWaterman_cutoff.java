@@ -9,7 +9,7 @@ import java.util.List;
  * @author qutong
  * 
  */
-public class SmithWaterman_cutoff extends BasicSmithWaterman {
+public class SmithWaterman_cutoff {
 	private int score; // represent the "goodness of fit"
 	private int m;// length of string X
 	private int n;// length of string Y
@@ -57,13 +57,21 @@ public class SmithWaterman_cutoff extends BasicSmithWaterman {
 			pairs = pairs + "[" + start.getX() + "," + end.getX() + "]&["
 					+ start.getY() + "," + end.getY() + "]#";
 		}
-		mix[0] = String.valueOf(max.getValue());
+		System.out.println("final score is : "+ calScore(s,candidateSet));
+		mix[0] = calScore(s,candidateSet);
 		mix[1] = pairs;
 		mix[2] = "src";
 		mix[3] = "trg";
 		return mix;
 	}
-
+public String calScore(int[][] sMatrix, List<cell> a){
+	int scoreInt=0;
+	for (int n = 0; n < a.size()/2; n++) {
+		cell end = a.get(2 * n + 1);
+		scoreInt=scoreInt+sMatrix[end.getX()][end.getY()];
+	}
+	return String.valueOf(scoreInt);
+}
 	public void calScoreMatrix(String[] srcArray, String[] trgArray,
 			int threshold) {
 		// public void calScoreMatrix(char[] srcArray, char[] trgArray) {
@@ -130,7 +138,7 @@ public class SmithWaterman_cutoff extends BasicSmithWaterman {
 				// set up candidate set. s will be set zero if its' Mij-Sij>v
 				// M will be choosen when Mij<Sij and Sij>v
 				if (M[i][j] - s[i][j] >= v) {
-					// System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
+					System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
 					// traceback(s, i, j);
 					s[i][j] = 0;// this should after traceback here, coz
 					M[i][j] = 0;

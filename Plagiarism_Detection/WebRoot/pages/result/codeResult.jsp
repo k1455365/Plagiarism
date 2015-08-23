@@ -22,7 +22,7 @@
 		trg = matchLine(trg);
 		sim = new Array;
 		var sim = document.getElementById('simRaw').innerHTML;
-		/* alert("sim"+sim); */
+		alert("sim"+sim);
 		simRecord = sim.split("#");
 		block = new Array;
 		for ( var i = 0; i < simRecord.length-1; i++) {
