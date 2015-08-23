@@ -118,11 +118,12 @@ System.out.println("m: "+m+" n: "+n);
 				}
 				// set up candidate set. s will be set zero if its' Mij-Sij>v
 				// M will be choosen when Mij<Sij and Sij>v
-//				if (M[i][j] - s[i][j] >= v) {
-//					System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
-//					traceback(s, i, j);
-//					s[i][j] = 0;// this should after traceback here, coz
-//				} else 
+				if (M[i][j] - s[i][j] >= v) {
+					//System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
+					//traceback(s, i, j);
+					s[i][j] = 0;// this should after traceback here, coz
+					M[i][j]=0;
+				} else 
 					if(s[i][j]>=v&&M[i][j]<s[i][j]){
 					System.out.println("M"+i+","+j+" is: "+M[i][j]+" S"+i+","+j+"is: "+s[i][j]);
 					traceback(s, i, j);// if a state isn't pre-dominated and
@@ -168,8 +169,8 @@ System.out.println("m: "+m+" n: "+n);
 			}
 		}
 		// 2n will be the position of similarity start and 2n+1 is end
-		//System.out.println("similiari pair start with state ("+origil.getX()+","+origil.getY()+")  and end at("+Mij.getX()+","+Mij.getY()+") with ");
-		//System.out.println("similiari pair are ("+origil.getX()+","+Mij.getX()+") in X and ("+origil.getY()+","+Mij.getY()+") in Y");
+		System.out.println("similiari pair start with state ("+origil.getX()+","+origil.getY()+")  and end at("+Mij.getX()+","+Mij.getY()+") with ");
+		System.out.println("similiari pair are ("+origil.getX()+","+Mij.getX()+") in X and ("+origil.getY()+","+Mij.getY()+") in Y");
 		candidateSet.add(origil);
 		candidateSet.add(Mij);
 	}
