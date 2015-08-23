@@ -115,8 +115,8 @@ public class BasicSmithWaterman {
 			} else {
 				i--;
 			}
-			origil.setX(i);
-			origil.setY(j);
+			origil.setX(i+1);
+			origil.setY(j+1);
 		}
 	}
 
