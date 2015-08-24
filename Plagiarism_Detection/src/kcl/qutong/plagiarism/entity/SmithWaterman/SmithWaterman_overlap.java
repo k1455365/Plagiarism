@@ -12,7 +12,7 @@ public class SmithWaterman_overlap {
 				// itself.
 	int[][] overlap;// size as score matrix and use 0 mark may cause overlap
 					// parts and 1 present avaliable are
-	int v;// threshold
+	int v = 3;// threshold
 	List<String> preX = new ArrayList<String>();
 	List<String> preY = new ArrayList<String>();
 	cell origil = new cell();
@@ -49,6 +49,8 @@ public class SmithWaterman_overlap {
 
 		X = preX.toArray(new String[1]);//
 		Y = preY.toArray(new String[1]);// transfer them into String Array
+		System.out
+				.println("************************************finish initial************************************");
 	}
 
 	public boolean judgeOverlap(cell a, cell b, cell c, cell d) {
@@ -65,13 +67,15 @@ public class SmithWaterman_overlap {
 	 * times
 	 */
 	public void calScoreMatrix() {
+		System.out
+				.println("************************************calculating score matrix************************************");
 		int m = X.length - 1;
 		int n = Y.length - 1;
 		int h, d, r;
 		h = d = r = 1;
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
-				while (overlap[i][j] != 0) {// is not zero mean this state is
+				if (overlap[i][j] != 0) {// is not zero mean this state is
 											// avaliable to calculate
 					// System.out.println("i=" + i + " j=" + j);
 					if (X[i].equalsIgnoreCase(Y[j])) {
@@ -119,7 +123,9 @@ public class SmithWaterman_overlap {
 						traceback(s, i, j);// if a state isn't pre-dominated and
 											// larger than v
 					}
-				}// end while
+				} else {
+					continue;
+				}
 			}
 		}
 	}
@@ -132,6 +138,9 @@ public class SmithWaterman_overlap {
 	 * @param j
 	 */
 	public void traceback(int[][] score, int i, int j) {
+		System.out
+				.println("************************************Trace Back************************************");
+
 		Mij = new cell();
 		origil = new cell();
 		Mij.setX(i);
@@ -165,16 +174,6 @@ public class SmithWaterman_overlap {
 		// System.out.println("similiari pair are ("+origil.getX()+","+Mij.getX()+") in X and ("+origil.getY()+","+Mij.getY()+") in Y");
 		candidateSet.add(origil);// first is origil of this alighment 2n
 		candidateSet.add(Mij);// second is end of this alighment 2n+1
-	}
-
-	public int overlapValue() {
-		int number = 1;
-		for (int i = 0; i < overlap.length; i++) {
-			for (int j = 0; j < overlap.length; j++) {
-				number = number + overlap[i][j];
-			}
-		}
-		return number;
 	}
 
 	/**
@@ -288,38 +287,44 @@ public class SmithWaterman_overlap {
 						.getY())
 						|| (start.getX() > next_end.getX() && start.getY() > next_end
 								.getY())) {
+					System.out.println("S " + next_end.getX() + ","
+							+ next_end.getY() + "is no overlap with "
+							+ end.getX() + "," + end.getY());
 					// if
 					// (end.getX()<=next_end.getX()&&end.getY()<=next_end.getY()){
+
+					// }
+				} else {
+					System.out.println("S " + next_end.getX() + ","
+							+ next_end.getY() + "is overlap with "
+							+ end.getX() + "," + end.getY());
 					if (s[next_end.getX()][next_end.getY()] > s[end.getX()][end
 							.getY()]) {
 						System.out.println("S " + next_end.getX() + ","
 								+ next_end.getY() + ">S" + end.getX() + ","
 								+ end.getY());
-						markOverlap(start,end);
+						markOverlap(start, end);
 						candidateSet.remove(2 * n);
 						candidateSet.remove(2 * n);
 					} else {
-						markOverlap(next_start,next_end);
+						markOverlap(next_start, next_end);
 						candidateSet.remove(2 * (n + 1));
 						candidateSet.remove(2 * (n + 1));
 					}
-					// }
-				} else {
-					System.out.println("S " + next_end.getX() + ","
-							+ next_end.getY() + "is no overlap with "
-							+ end.getX() + "," + end.getY());
 				}
 			}
 		}
 		return candidateSet;
 	}
-public void markOverlap(cell start,cell end){
-	for(int i=start.getX();i<=end.getX();i++){
-		for(int j=start.getY();j<=end.getY();j++){
-			overlap[i][j]=1;
+
+	public void markOverlap(cell start, cell end) {
+		for (int i = start.getX(); i <= end.getX(); i++) {
+			for (int j = start.getY(); j <= end.getY(); j++) {
+				overlap[i][j] = 1;
+			}
 		}
 	}
-}
+
 	/**
 	 * organize result as required format
 	 * 
@@ -330,26 +335,29 @@ public void markOverlap(cell start,cell end){
 	 */
 
 	public String[] result(String[] srcArray, String[] trgArray, int threshold) {
-		String[] mix = null;
+		String[] mix = null ;
 		cell start;
 		cell end;
-		String old_pairs = "";
 		String pairs = "";
 		initialMatrix(srcArray, trgArray);
-		int candidateSize = 0;
+//		calScoreMatrix();
+//		candidateSet = removeSameOrigil(candidateSet, s);
+//		candidateSet = removeOverlap(candidateSet, s, overlap);
+		int candidateSize = 100;
 		System.out.println("previous size is: " + candidateSize);
 		while (candidateSet.size() - candidateSize != 0) {// while candidate set
 															// is not change
 															// present all the
 															// matrix has been
 															// processed
-			candidateSize = candidateSet.size();
+			//candidateSize = candidateSet.size();
 			calScoreMatrix();
 			candidateSet = removeSameOrigil(candidateSet, s);
 			candidateSet = removeOverlap(candidateSet, s, overlap);// not really
 																	// use
 																	// insert
 																	// params
+			candidateSize = candidateSet.size();
 		}
 		System.out.println("after remove");
 		for (int n = 0; n < candidateSet.size() / 2; n++) {
@@ -359,7 +367,10 @@ public void markOverlap(cell start,cell end){
 			pairs = pairs + "[" + start.getX() + "," + end.getX() + "]&["
 					+ start.getY() + "," + end.getY() + "]#";
 		}
+
+		System.out.println("final result is : " + pairs);
 		System.out.println("final score is : " + calScore(s, candidateSet));
+		
 		mix[0] = calScore(s, candidateSet);
 		mix[1] = pairs;
 		mix[2] = "src";
