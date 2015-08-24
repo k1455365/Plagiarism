@@ -77,7 +77,7 @@ public String calScore(int[][] sMatrix, List<cell> a){
 		// public void calScoreMatrix(char[] srcArray, char[] trgArray) {
 		m = srcArray.length;
 		n = trgArray.length;
-		v = threshold = 3;// need to be changed
+		v = threshold = 5;// need to be changed
 		preX.add("0");
 		preY.add("0");
 		h = d = r = 1;

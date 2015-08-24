@@ -335,7 +335,7 @@ public class SmithWaterman_overlap {
 	 */
 
 	public String[] result(String[] srcArray, String[] trgArray, int threshold) {
-		String[] mix = null ;
+		String[] mix = new String[4];
 		cell start;
 		cell end;
 		String pairs = "";
@@ -364,8 +364,8 @@ public class SmithWaterman_overlap {
 			start = candidateSet.get(2 * n);
 			end = candidateSet.get(2 * n + 1);
 			System.out.println(pairs);
-			pairs = pairs + "[" + start.getX() + "," + end.getX() + "]&["
-					+ start.getY() + "," + end.getY() + "]#";
+			pairs = pairs + "[" + (start.getX()-1) + "," + (end.getX()-1) + "]&["
+					+ (start.getY()-1) + "," + (end.getY()-1) + "]#";
 		}
 
 		System.out.println("final result is : " + pairs);
