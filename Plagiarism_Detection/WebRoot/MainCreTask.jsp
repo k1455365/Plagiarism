@@ -179,6 +179,12 @@ input {
 												<option value="3">Smith-Waterman without verlap</option>
 										</select></td>
 									</tr>
+									<tr>
+										<td class="column1">Threshold:</td>
+										<td><input type="text" class="text" name="threshold"
+											id="threshold" size="5" />
+										</td>
+									</tr>
 								</table>
 								<!--     upload files -->
 								<table class="table form" style="width:90%; min-width:300px;"
