@@ -46,6 +46,7 @@ public class creatTaskAction extends ActionSupport {
 	private User u;
 	private int algorithm;
 	private int tokensize;
+	private int threshold;
 	// compare needed
 	private contentReader cr;
 	// result set
@@ -261,6 +262,14 @@ public class creatTaskAction extends ActionSupport {
 		this.AlignmentB = AlignmentB;
 	}
 
+	public int getThreshold() {
+		return threshold;
+	}
+
+	public void setThreshold(int threshold) {
+		this.threshold = threshold;
+	}
+
 	public String execute() throws Exception {
 		srcdir = SaveUploadFile.savefile(fst, fstFileName);
 		trgdir = SaveUploadFile.savefile(sec, secFileName);
@@ -277,7 +286,7 @@ public class creatTaskAction extends ActionSupport {
 		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
 		// return result include largest value, similarity, result,
 		compareManager cm = new compareManager();
-		mixResult = cm.compareTool(Content1, Content2, taskway, algorithm);
+		mixResult = cm.compareTool(Content1, Content2, taskway, algorithm,threshold);
 
 		// store task into database with taskname files directory and result
 		taskBean = new Task();

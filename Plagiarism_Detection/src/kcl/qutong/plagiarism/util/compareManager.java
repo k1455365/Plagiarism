@@ -13,7 +13,7 @@ public class compareManager {
 	SmithWaterman_overlap swo=new SmithWaterman_overlap();
 
 	public String[] compareTool(String srcContent, String trgContent,
-			int taskway, int algorithm) {
+			int taskway, int algorithm,int threshold) {
 		// String[]
 		// mixResult={"similarity","details","src content after process","trg content after process"};
 		// String[]
@@ -57,7 +57,7 @@ public class compareManager {
 						.println("enter text compare using smith waterman cutoff algorithm");
 				String[] srcArray = srcContent.split(" ");
 				String[] trgArray = trgContent.split(" ");
-				mixResult = swc.result(srcArray, trgArray,3);
+				mixResult = swc.result(srcArray, trgArray,threshold);
 				break;
 			}
 			case 2: {
@@ -65,7 +65,7 @@ public class compareManager {
 						.println("enter code compare using smith waterman cutoff algorithm");
 				String[] srcArray = srcContent.split("\n");
 				String[] trgArray = trgContent.split("\n");
-				mixResult = swc.result(srcArray, trgArray,3);
+				mixResult = swc.result(srcArray, trgArray,threshold);
 				break;
 			}
 			case 3: {
@@ -86,7 +86,7 @@ public class compareManager {
 						.println("enter text compare using smith waterman without overlap algorithm");
 				String[] srcArray = srcContent.split(" ");
 				String[] trgArray = trgContent.split(" ");
-				mixResult = swo.result(srcArray, trgArray,3);
+				mixResult = swo.result(srcArray, trgArray,threshold);
 				break;
 			}
 			case 2: {
@@ -94,7 +94,7 @@ public class compareManager {
 						.println("enter code compare using  smith waterman without overlap algorithm");
 				String[] srcArray = srcContent.split("\n");
 				String[] trgArray = trgContent.split("\n");
-				mixResult = swo.result(srcArray, trgArray,3);
+				mixResult = swo.result(srcArray, trgArray,threshold);
 				break;
 			}
 			case 3: {
