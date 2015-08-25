@@ -164,7 +164,7 @@ input {
 												<option value="3">character</option>
 										</select></td>
 									</tr>
-									<tr>
+									<tr class="odd">
 										<td class="column1">Token Size:</td>
 										<td><select tabindex="普通" name="tokensize"><option
 													value="1">word</option>
@@ -179,10 +179,24 @@ input {
 												<option value="3">Smith-Waterman without verlap</option>
 										</select></td>
 									</tr>
-									<tr>
+									<tr class="odd">
 										<td class="column1">Threshold:</td>
 										<td><input type="text" class="text" name="threshold"
 											id="threshold" size="5" />
+										</td>
+									</tr>
+									<tr >
+										<td class="column1">score of hits</td>
+										<td><input type="text" class="text" name="hits"
+											id="hits" size="2" />
+										</td>
+										<td class="column1">score of indel</td>
+										<td><input type="text" class="text" name="indel"
+											id="indel" size="2" />
+										</td>
+										<td class="column1">score of insert</td>
+										<td><input type="text" class="text" name="insert"
+											id="insert" size="2" />
 										</td>
 									</tr>
 								</table>
