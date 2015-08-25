@@ -12,7 +12,7 @@ public class SmithWaterman_overlap {
 				// itself.
 	int[][] overlap;// size as score matrix and use 0 mark may cause overlap
 					// parts and 1 present avaliable are
-	int v = 3;// threshold
+	int v;// threshold
 	List<String> preX = new ArrayList<String>();
 	List<String> preY = new ArrayList<String>();
 	cell origil = new cell();
@@ -336,6 +336,7 @@ public class SmithWaterman_overlap {
 
 	public String[] result(String[] srcArray, String[] trgArray, int threshold) {
 		String[] mix = new String[4];
+		v=threshold;
 		cell start;
 		cell end;
 		String pairs = "";
