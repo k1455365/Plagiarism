@@ -53,14 +53,14 @@
 			expression="execution(* kcl.qutong.plagiarism.dao.*.*(..))" />
 		<aop:advisor pointcut-ref="allDaoMethod" advice-ref="txAdvice" />
 	</aop:config>
-	<!-- 提供数据接口的bean -->
+	<!-- bean of provide data access-->
 	<bean id="userDAO" class="kcl.qutong.plagiarism.dao.impl.UserDAOImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="taskDAO" class="kcl.qutong.plagiarism.dao.impl.TaskDAOImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<!-- 依赖注入的一种实现形式,与用户相关的服务都由userservice负责 -->
+	<!-- kind of depend injection ,users related businesses -->
 	<bean id="userService" class="kcl.qutong.plagiarism.service.UserServiceImpl" scope="prototype">
 		<property name="userDAO" ref="userDAO"/>
 	</bean>

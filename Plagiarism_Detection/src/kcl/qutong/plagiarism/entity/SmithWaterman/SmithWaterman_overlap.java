@@ -53,15 +53,6 @@ public class SmithWaterman_overlap {
 				.println("************************************finish initial************************************");
 	}
 
-	public boolean judgeOverlap(cell a, cell b, cell c, cell d) {
-		boolean flag = true;
-		// while candiadte set not empty{
-		// choose largest
-		// compare delete overlap
-		// }
-		return flag;
-	}
-
 	/**
 	 * calculate score matrix and M in the same time. it will be called many
 	 * times
@@ -290,10 +281,6 @@ public class SmithWaterman_overlap {
 					System.out.println("S " + next_end.getX() + ","
 							+ next_end.getY() + "is no overlap with "
 							+ end.getX() + "," + end.getY());
-					// if
-					// (end.getX()<=next_end.getX()&&end.getY()<=next_end.getY()){
-
-					// }
 				} else {
 					System.out.println("S " + next_end.getX() + ","
 							+ next_end.getY() + "is overlap with "

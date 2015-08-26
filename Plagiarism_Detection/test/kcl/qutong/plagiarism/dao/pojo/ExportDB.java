@@ -10,11 +10,10 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
  */  
 public class ExportDB {  
     public static void main(String[] args){  
-        //首先声明获取配置文件  
-        //默认读取Hibernate.cfg.xml文件  
+        //get configuration file  
+        //default read Hibernate.cfg.xml  
         Configuration cfg=new Configuration().configure();    
-          
-        //将读取到的xml文件导出到ddl  
+        //export xml into ddl  
         SchemaExport export=new SchemaExport(cfg);  
         export.create(true, true);  
     }  
