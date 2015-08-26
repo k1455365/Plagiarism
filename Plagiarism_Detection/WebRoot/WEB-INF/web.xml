@@ -22,11 +22,11 @@
   <!-- this is spring listener, when web project start it use applicationContent.xml create spring container -->
   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  	<!-- 配置spring -->
+  	<!-- configure spring -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!-- 配置spring资源 -->
+	<!-- set up spring resources -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext*.xml</param-value><!-- this path should be the same with the project classpath can be used to present the src directory-->	</context-param>
