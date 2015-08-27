@@ -8,17 +8,6 @@ public class SmithWatermanArray {
 	 String mAlignmentSeqA = "";
 	 String mAlignmentSeqB = "";
 
-	// public SmithWatermanArray(String a,String b){
-	// char[] seqA =a.toCharArray();
-	// char[] seqB =b.toCharArray();
-	//
-	// init(seqA, seqB);
-	// process();
-	// backtrack();
-	// printMatrix();
-	// printScoreAndAlignments();
-	// result();
-	// }
 	public  String[] result(String a, String b) {
 		String[] mix = new String[4];
 		char[] seqA = a.toCharArray();
