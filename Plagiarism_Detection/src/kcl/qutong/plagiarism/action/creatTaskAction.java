@@ -47,6 +47,9 @@ public class creatTaskAction extends ActionSupport {
 	private int algorithm;
 	private int tokensize;
 	private int threshold;
+	private int hits;
+	private int indel;
+	private int insert;
 	// compare needed
 	private contentReader cr;
 	// result set
@@ -270,6 +273,38 @@ public class creatTaskAction extends ActionSupport {
 		this.threshold = threshold;
 	}
 
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+
+	public int getIndel() {
+		return indel;
+	}
+
+	public void setIndel(int indel) {
+		this.indel = indel;
+	}
+
+	public int getInsert() {
+		return insert;
+	}
+
+	public void setInsert(int insert) {
+		this.insert = insert;
+	}
+
+	public contentReader getCr() {
+		return cr;
+	}
+
+	public void setCr(contentReader cr) {
+		this.cr = cr;
+	}
+
 	public String execute() throws Exception {
 		srcdir = SaveUploadFile.savefile(fst, fstFileName);
 		trgdir = SaveUploadFile.savefile(sec, secFileName);
@@ -286,7 +321,7 @@ public class creatTaskAction extends ActionSupport {
 		/*-------------------------- compare contents based on thier tyoe and result mix result---------------------------------*/
 		// return result include largest value, similarity, result,
 		compareManager cm = new compareManager();
-		mixResult = cm.compareTool(Content1, Content2, taskway, algorithm,threshold);
+		mixResult = cm.compareTool(Content1, Content2, taskway, algorithm,threshold,hits,indel,insert);
 
 		// store task into database with taskname files directory and result
 		taskBean = new Task();

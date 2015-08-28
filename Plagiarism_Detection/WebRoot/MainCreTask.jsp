@@ -198,7 +198,7 @@ input {
 										</td>
 									</tr>
 									<tr >
-										<td class="column1">score of insert</td>
+										<td class="column1">score of replacement</td>
 										<td><input type="text" class="text" name="insert"
 											id="insert" size="2" />
 										</td>

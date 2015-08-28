@@ -85,4 +85,7 @@
 		<property name="taskService" ref="taskService"/>
 		<property name="userService" ref="userService"/>
 	</bean>
+	<bean id="BeanShowTaskDetailsAction" class="kcl.qutong.plagiarism.action.showTaskResult" scope="prototype">
+		<property name="taskService" ref="taskService"/>
+	</bean>
 </beans>

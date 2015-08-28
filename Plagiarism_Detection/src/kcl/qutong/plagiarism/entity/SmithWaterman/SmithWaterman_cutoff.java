@@ -31,11 +31,14 @@ public class SmithWaterman_cutoff {
 	cell[] backTrace;
 	SmithWaterman_overlap swo = new SmithWaterman_overlap();
 
-	public String[] result(String[] srcArray, String[] trgArray, int threshold) {
+	public String[] result(String[] srcArray, String[] trgArray, int threshold,int hits,int indel,int replacement) {
 		cell start;
 		cell end;
 		String old_pairs = "";
 		String pairs = "";
+		h=hits;
+		d=indel;
+		r=replacement;
 		calScoreMatrix(srcArray, trgArray, threshold);
 		System.out.println("enter smithwaterman");
 		for (int n = 0; n < candidateSet.size()/2; n++) {
@@ -80,7 +83,7 @@ public String calScore(int[][] sMatrix, List<cell> a){
 		v = threshold;// need to be changed
 		preX.add("0");
 		preY.add("0");
-		h = d = r = 1;
+		//h = d = r = 1;
 		max.setValue(0);
 		System.out.println("m: " + m + " n: " + n);
 		// make the first column is zero

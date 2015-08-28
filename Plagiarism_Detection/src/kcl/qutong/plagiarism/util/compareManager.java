@@ -13,12 +13,8 @@ public class compareManager {
 	SmithWaterman_overlap swo=new SmithWaterman_overlap();
 
 	public String[] compareTool(String srcContent, String trgContent,
-			int taskway, int algorithm,int threshold) {
-		// String[]
-		// mixResult={"similarity","details","src content after process","trg content after process"};
-		// String[]
-		// mixResult={"11","[1,3]&[3,6]#[4,9]&[6,8]","src content after process","trg content after process"};
-
+			int taskway, int algorithm,int threshold,int hits,int indel,int replacement) {
+		System.out.println(hits+","+indel+","+replacement);
 		switch (algorithm) {
 		case 1: {
 			switch (taskway) {
@@ -57,7 +53,7 @@ public class compareManager {
 						.println("enter text compare using smith waterman cutoff algorithm");
 				String[] srcArray = srcContent.split(" ");
 				String[] trgArray = trgContent.split(" ");
-				mixResult = swc.result(srcArray, trgArray,threshold);
+				mixResult = swc.result(srcArray, trgArray,threshold,hits,indel,replacement);
 				break;
 			}
 			case 2: {
@@ -65,7 +61,7 @@ public class compareManager {
 						.println("enter code compare using smith waterman cutoff algorithm");
 				String[] srcArray = srcContent.split("\n");
 				String[] trgArray = trgContent.split("\n");
-				mixResult = swc.result(srcArray, trgArray,threshold);
+				mixResult = swc.result(srcArray, trgArray,threshold,hits,indel,replacement);
 				break;
 			}
 			case 3: {
@@ -86,7 +82,7 @@ public class compareManager {
 						.println("enter text compare using smith waterman without overlap algorithm");
 				String[] srcArray = srcContent.split(" ");
 				String[] trgArray = trgContent.split(" ");
-				mixResult = swo.result(srcArray, trgArray,threshold);
+				mixResult = swo.result(srcArray, trgArray,threshold,hits,indel,replacement);
 				break;
 			}
 			case 2: {
@@ -94,7 +90,7 @@ public class compareManager {
 						.println("enter code compare using  smith waterman without overlap algorithm");
 				String[] srcArray = srcContent.split("\n");
 				String[] trgArray = trgContent.split("\n");
-				mixResult = swo.result(srcArray, trgArray,threshold);
+				mixResult = swo.result(srcArray, trgArray,threshold,hits,indel,replacement);
 				break;
 			}
 			case 3: {

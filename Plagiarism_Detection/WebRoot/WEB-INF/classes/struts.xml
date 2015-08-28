@@ -3,11 +3,11 @@
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
 	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
-    <constant name="struts.serve.static.browserCache" value="false" />
-    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
-    <constant name="struts.configuration.xml.reload" value="true" />
-     <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
-	<constant name="struts.multipart.maxSize" value="10000000"/>
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+	<constant name="struts.multipart.maxSize" value="10000000" />
 	<!-- configuration of login -->
 	<package name="login" extends="struts-default">
 		<action name="loginaction" class="BeanLoginAction">
@@ -24,7 +24,7 @@
 			<result name="success" type="redirectAction">Welcome</result>
 		</action>
 		<!-- use action jump back to welcome page -->
-		<action name="Welcome" >
+		<action name="Welcome">
 			<result name="cancel">welcome.html</result>
 		</action>
 	</package>
@@ -39,8 +39,14 @@
 			<result name="error">error.jsp</result>
 			<result name="cancel" type="redirectAction">Welcome</result>
 		</action>
-	<action name="showTask" class="BeanShowTaskAction">
+		<action name="showTask" class="BeanShowTaskAction">
 			<result name="success">/pages/task/TaskList.jsp</result>
+			<result name="error">/error.html</result>
+		</action>
+		<action name="ShowTaskResultDetails" class="BeanShowTaskDetailsAction">
+			<result name="text">/pages/result/textResult.jsp</result>
+			<result name="code">/pages/result/codeResult.jsp</result>
+			<result name="token">/pages/result/tokenResult.jsp</result>
 			<result name="error">/error.html</result>
 		</action>
 	</package>

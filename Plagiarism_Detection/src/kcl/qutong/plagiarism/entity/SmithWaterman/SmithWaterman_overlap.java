@@ -17,7 +17,9 @@ public class SmithWaterman_overlap {
 	List<String> preY = new ArrayList<String>();
 	cell origil = new cell();
 	cell Mij = new cell();
-
+	private int h;// hits
+	private int d;// delete of insert
+	private int r;// replace
 	public void initialMatrix(String[] srcArray, String[] trgArray) {
 		int m = srcArray.length;
 		int n = trgArray.length;
@@ -62,8 +64,7 @@ public class SmithWaterman_overlap {
 				.println("************************************calculating score matrix************************************");
 		int m = X.length - 1;
 		int n = Y.length - 1;
-		int h, d, r;
-		h = d = r = 1;
+		//h = d = r = 1;
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
 				if (overlap[i][j] != 0) {// is not zero mean this state is
@@ -321,16 +322,16 @@ public class SmithWaterman_overlap {
 	 * @return
 	 */
 
-	public String[] result(String[] srcArray, String[] trgArray, int threshold) {
+	public String[] result(String[] srcArray, String[] trgArray, int threshold,int hits,int indel, int replacement) {
 		String[] mix = new String[4];
 		v=threshold;
+		h=hits;
+		d=indel;
+		r=replacement;
 		cell start;
 		cell end;
 		String pairs = "";
 		initialMatrix(srcArray, trgArray);
-//		calScoreMatrix();
-//		candidateSet = removeSameOrigil(candidateSet, s);
-//		candidateSet = removeOverlap(candidateSet, s, overlap);
 		int candidateSize = 100;
 		System.out.println("previous size is: " + candidateSize);
 		while (candidateSet.size() - candidateSize != 0) {// while candidate set
