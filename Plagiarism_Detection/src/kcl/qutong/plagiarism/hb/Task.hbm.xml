@@ -15,6 +15,18 @@
 		<property name="algorithm" type="java.lang.String">
 			<column name="ALGORITHM" />
 		</property>
+		<property name="threshold" type="java.lang.Integer">
+			<column name="THRESHOLD" />
+		</property>
+		<property name="hits" type="java.lang.Integer">
+			<column name="HITS" />
+		</property>
+		<property name="indel" type="java.lang.Integer">
+			<column name="INDEL" />
+		</property>
+		<property name="replacement" type="java.lang.Integer">
+			<column name="REPLACEMENT" />
+		</property>
 		<property name="tokensize" type="java.lang.String">
 			<column name="TOKENSIZE" />
 		</property>

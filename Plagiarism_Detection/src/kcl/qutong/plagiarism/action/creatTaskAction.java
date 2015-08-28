@@ -326,10 +326,14 @@ public class creatTaskAction extends ActionSupport {
 		// store task into database with taskname files directory and result
 		taskBean = new Task();
 		taskBean.setTaskname(taskname);
-		taskBean.setResult("result");
+		taskBean.setResult(mixResult[1]);
 		taskBean.setSrcdir(srcdir);
 		taskBean.setTrgdir(trgdir);
 		taskBean.setAlgorithm(taskContentProcess.judgeAlgorithm(algorithm));
+		taskBean.setThreshold(threshold);
+		taskBean.setHits(hits);
+		taskBean.setIndel(indel);
+		taskBean.setReplacement(insert);
 		taskBean.setTaskway(taskContentProcess.judgeTaskWay(taskway));
 		taskBean.setTokensize(taskContentProcess.judgeTokenSize(tokensize));
 		taskBean.setTasktime(new Timestamp(System.currentTimeMillis()));
@@ -341,8 +345,8 @@ public class creatTaskAction extends ActionSupport {
 		setTrgcontent(Content2);
 		setSrcfile(srcdir);
 		setTrgfile(trgdir);
-		setTextsim(mixResult[0]);//similiar pairs
-		setTextresult(mixResult[1]);//score between two pages
+		setTextsim(mixResult[0]);//score between two pages
+		setTextresult(mixResult[1]);//similiar pairs
 		// token task special value
 		setAlignmentA(mixResult[2]);
 		setAlignmentB(mixResult[3]);

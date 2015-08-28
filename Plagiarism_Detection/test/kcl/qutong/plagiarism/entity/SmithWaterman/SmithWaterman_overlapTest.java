@@ -18,7 +18,7 @@ String b =  "x y a b c d b c e f";
 String[] seqA = a1.split(" ");
 String[] seqB = b.split(" ");
 SmithWaterman_overlap swo=new SmithWaterman_overlap();
-String[] a=swo.result(seqA, seqB,5);
+String[] a=swo.result(seqA, seqB,5,1,1,1);
 	}
 
 }

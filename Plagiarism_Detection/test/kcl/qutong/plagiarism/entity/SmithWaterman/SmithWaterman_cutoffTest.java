@@ -17,7 +17,7 @@ public class SmithWaterman_cutoffTest {
 		String[] seqA = a1.split(" ");
 		String[] seqB = b.split(" ");
 		SmithWaterman_cutoff swc=new SmithWaterman_cutoff();
-		String[] a=swc.result(seqA, seqB,5);
+		String[] a=swc.result(seqA, seqB,5,1,1,1);
 		System.out.println("pairs:"+a[1]);
 	}
 

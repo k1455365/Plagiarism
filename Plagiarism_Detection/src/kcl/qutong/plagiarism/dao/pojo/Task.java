@@ -6,6 +6,10 @@ public class Task {
 	private int id;
 	private String taskname;
 	private String algorithm;
+	private int threshold;
+	private int hits;
+	private int indel;
+	private int replacement;
 	private String tokensize;
 	private String taskway;
 	private String result;
@@ -76,6 +80,30 @@ public class Task {
 	}
 	public void setTokensize(String tokensize) {
 		this.tokensize = tokensize;
+	}
+	public int getThreshold() {
+		return threshold;
+	}
+	public void setThreshold(int threshold) {
+		this.threshold = threshold;
+	}
+	public int getHits() {
+		return hits;
+	}
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+	public int getIndel() {
+		return indel;
+	}
+	public void setIndel(int indel) {
+		this.indel = indel;
+	}
+	public int getReplacement() {
+		return replacement;
+	}
+	public void setReplacement(int replacement) {
+		this.replacement = replacement;
 	}
 
 }
