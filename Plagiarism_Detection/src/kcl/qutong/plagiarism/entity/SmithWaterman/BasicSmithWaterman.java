@@ -61,13 +61,6 @@ public class BasicSmithWaterman {
 			s[0][j] = 0;
 		}
 
-		// for (int i = 0; i < m + 1; i++) {
-		// s[i][0] = 0;
-		// }
-		// // make the first row is zero
-		// for (int j = 0; j < n + 1; j++) {
-		// s[0][j] = 0;
-		// }
 		X = preX.toArray(new String[1]);
 		Y = preY.toArray(new String[1]);
 		// start from 1 is because previous work hence the result could be

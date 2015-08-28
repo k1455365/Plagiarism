@@ -190,10 +190,14 @@ input {
 										<td><input type="text" class="text" name="hits"
 											id="hits" size="2" />
 										</td>
+									</tr>
+									<tr >
 										<td class="column1">score of indel</td>
 										<td><input type="text" class="text" name="indel"
 											id="indel" size="2" />
 										</td>
+									</tr>
+									<tr >
 										<td class="column1">score of insert</td>
 										<td><input type="text" class="text" name="insert"
 											id="insert" size="2" />
