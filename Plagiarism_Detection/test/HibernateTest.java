@@ -5,7 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-
+/**
+ * test hibernate configuration
+ * @author qutong
+ *
+ */
 public class HibernateTest extends TestCase {
 	// test API ,configuration,sessionfactory,session and transaction
 	public void test1() {

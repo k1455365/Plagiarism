@@ -2,7 +2,11 @@ package kcl.qutong.plagiarism.entity.SmithWaterman;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * this version considering overlaps between canidate paths
+ * @author qutong
+ *
+ */
 public class SmithWaterman_overlap {
 	List<cell> candidateSet = new ArrayList<cell>();
 	String[] X;// row in score matrix

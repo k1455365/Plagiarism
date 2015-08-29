@@ -3,7 +3,11 @@ package kcl.qutong.plagiarism.entity.SmithWaterman;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+/**
+ * test class for smithwaterman
+ * @author qutong
+ *
+ */
 public class BasicSmithWatermanTest {
 
 	@Test

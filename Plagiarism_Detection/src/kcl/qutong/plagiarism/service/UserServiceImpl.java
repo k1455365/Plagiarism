@@ -2,7 +2,11 @@ package kcl.qutong.plagiarism.service;
 
 import kcl.qutong.plagiarism.dao.UserDAO;
 import kcl.qutong.plagiarism.dao.pojo.User;
-
+/**
+ * implementation of userService
+ * @author qutong
+ *
+ */
 public class UserServiceImpl implements UserService{
 	private UserDAO userDAO;
 

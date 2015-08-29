@@ -53,13 +53,6 @@ public class showTaskAction extends ActionSupport{
 	}
 	public String execute() throws Exception {
 
-		//		HttpServletRequest req=ServletActionContext.getRequest();
-//		HttpSession session=req.getSession();
-//		String username=(String) session.getAttribute("username");
-//		ActionInvocation invocation = null;
-//		ActionContext acx = invocation.getInvocationContext();
-//		String username = (String)acx.getSession().get("username");
-		  //取得名为Session的属性
 		tasklist=taskService.findTasksbyUser(username);
 		setTasklist(tasklist);
 		System.out.println("user is: "+username+" he's tasks are: "+tasklist);

@@ -1,5 +1,9 @@
 package kcl.qutong.plagiarism.dao.pojo;
-
+/**
+ * entity clas of user
+ * @author qutong
+ *
+ */
 public class User {
 	private int id;
 	private String username;

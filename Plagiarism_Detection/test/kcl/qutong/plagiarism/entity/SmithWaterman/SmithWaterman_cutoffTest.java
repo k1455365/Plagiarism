@@ -3,7 +3,11 @@ package kcl.qutong.plagiarism.entity.SmithWaterman;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+/**
+ * verfiy result using data in irving paper
+ * @author qutong
+ *
+ */
 public class SmithWaterman_cutoffTest {
 
 	@Test

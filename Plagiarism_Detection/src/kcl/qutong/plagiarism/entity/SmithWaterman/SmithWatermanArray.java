@@ -1,5 +1,9 @@
 package kcl.qutong.plagiarism.entity.SmithWaterman;
-
+/**
+ * smith waterman alorithm for array
+ * @author qutong
+ *
+ */
 public class SmithWatermanArray {
 	 char[] mSeqA;
 	 char[] mSeqB;

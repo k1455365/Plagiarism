@@ -1,5 +1,9 @@
 package kcl.qutong.plagiarism.entity.SmithWaterman;
-
+/**
+ * point with parents
+ * @author qutong
+ *
+ */
 public class cell extends point{
 point[] parents;
 point[] pre_dominated;

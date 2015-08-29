@@ -48,7 +48,7 @@
 								style="border-width:0px;height:26px;border-collapse:collapse;">
 								<tr>
 									<td align="center" style="white-space:nowrap;"><a
-										href="/webcmp/login/Quit.action">&nbsp;Logout</a>
+										href="">&nbsp;Logout</a>
 									</td>
 								</tr>
 							</table>

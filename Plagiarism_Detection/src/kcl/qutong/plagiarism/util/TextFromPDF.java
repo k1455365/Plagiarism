@@ -12,8 +12,8 @@ public class TextFromPDF {
 	/**
 	 * simply reader all the text from a pdf file. 
 	 * You have to deal with the format of the output text by yourself.
-	 * 2008-2-25
 	 * @param pdfFilePath file path
+	 * @author qutong
 	 * @return all text in the pdf file
 	 */
 	public static String getTextFromPDF(String pdfFilePath) 

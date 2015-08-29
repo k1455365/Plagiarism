@@ -1,7 +1,11 @@
 package kcl.qutong.plagiarism.dao.pojo;
 
 import java.sql.Timestamp;
-
+/**
+ * eneity class of task
+ * @author qutong
+ *
+ */
 public class Task {
 	private int id;
 	private String taskname;

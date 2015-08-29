@@ -12,7 +12,11 @@ import org.apache.struts2.util.ServletContextAware;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
+/**
+ * get file from browser and save it in serverside
+ * @author qutong
+ *
+ */
 public class FileUpload extends ActionSupport implements ServletContextAware {   
        
     private static final long serialVersionUID = -5016873153441103539L;   

@@ -29,11 +29,30 @@ public class TaskDAOImpl extends HibernateDaoSupport implements TaskDAO {
 						// TODO Auto-generated method stub
 						org.hibernate.Query query = session
 								.createQuery("from Task t where t.creator= '"
-								+ username + "'");
-						 
+										+ username + "'");
+
 						return query.list();
 					}
 				});
 		return list;
+	}
+
+	public Task findTaskbyID(final int id) {
+		Task task = (Task) getHibernateTemplate().execute(
+				new HibernateCallback() {
+					public Object doInHibernate(Session session)
+							throws HibernateException, SQLException {
+						// TODO Auto-generated method stub
+						org.hibernate.Query query = session
+								.createQuery("from Task t where t.id= '" + id
+										+ "'");
+
+						if (query.list().size() != 0) {
+							return query.list().get(0);
+						}
+						return null;
+					}
+				});
+		return task;
 	}
 }

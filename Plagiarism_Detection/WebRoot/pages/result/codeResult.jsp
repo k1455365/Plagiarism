@@ -121,9 +121,9 @@
 				+ "<p class=\"p_data\" >Score："
 				+ simResult
 				+ "</p><p class=\"return\"><a href=\"#\"class=\"white\" onclick=\"showTable()\">"
-				+"<img alt=\"\" src=\"/webcmp/images/table.png\" />Check the similiar pairs</a>"
+				+"<img alt=\"\" src=\"/Plagiarism_Detection/image/table.png\" />Check the similiar pairs</a>"
 				+"<span>&nbsp</span><a class=\"white\" href=\"\">"
-				+ "<img alt=\"\" src=\"/webcmp/images/back.png\" /> Back</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">File Name：</td>"
+				+ "<img alt=\"\" src=\"/Plagiarism_Detection/image/back.png\" /> Back</a></p></td></tr><tr bgcolor=\"#FFFFF5\"><td class=\"td_midTitle\">File Name：</td>"
 				+ "<td class=\"td_midData\">"
 				+ srcFile
 				+ "</td><td class=\"td_midTitle\">File Name：</td>"

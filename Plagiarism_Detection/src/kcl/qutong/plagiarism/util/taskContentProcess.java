@@ -1,5 +1,9 @@
 package kcl.qutong.plagiarism.util;
-
+/**
+ * parse content from request
+ * @author qutong
+ *
+ */
 public class taskContentProcess {
 public static String judgeTaskWay(int taskway){
 	String result="text";

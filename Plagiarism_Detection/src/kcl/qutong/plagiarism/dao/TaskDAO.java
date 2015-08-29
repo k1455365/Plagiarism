@@ -9,5 +9,6 @@ public interface TaskDAO {
 	void addTask(Task task);
 
 	public List<Task> findTasksbyUser(String username);
+	public Task findTaskbyID(int id);
 
 }

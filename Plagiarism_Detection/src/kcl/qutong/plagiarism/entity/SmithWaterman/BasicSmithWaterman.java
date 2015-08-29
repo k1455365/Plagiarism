@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * basic smith waterman alogrithm
  * @author qutong
  * 
  */

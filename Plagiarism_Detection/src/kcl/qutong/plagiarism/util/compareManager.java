@@ -4,7 +4,11 @@ import kcl.qutong.plagiarism.entity.SmithWaterman.BasicSmithWaterman;
 import kcl.qutong.plagiarism.entity.SmithWaterman.SmithWatermanArray;
 import kcl.qutong.plagiarism.entity.SmithWaterman.SmithWaterman_cutoff;
 import kcl.qutong.plagiarism.entity.SmithWaterman.SmithWaterman_overlap;
-
+/**
+ * assign task to corresponding algorithm 
+ * @author qutong
+ *
+ */
 public class compareManager {
 	String[] mixResult;
 	SmithWatermanArray swa = new SmithWatermanArray();

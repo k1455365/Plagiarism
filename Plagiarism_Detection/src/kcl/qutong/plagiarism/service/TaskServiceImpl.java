@@ -4,7 +4,11 @@ import java.util.List;
 
 import kcl.qutong.plagiarism.dao.TaskDAO;
 import kcl.qutong.plagiarism.dao.pojo.Task;
-
+/**
+ * implementation of taskservice
+ * @author qutong
+ *
+ */
 public class TaskServiceImpl implements TaskService {
 	private TaskDAO taskDAO;
 
@@ -33,6 +37,13 @@ public class TaskServiceImpl implements TaskService {
 		// TODO Auto-generated method stub
 		List<Task> list =taskDAO.findTasksbyUser(username);
 		return list;
+	}
+
+	@Override
+	public Task findTaskbyID(int id) {
+		// TODO Auto-generated method stub
+		Task task=taskDAO.findTaskbyID(id);
+		return task;
 	}
 
 }
