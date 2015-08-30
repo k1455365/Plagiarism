@@ -3,7 +3,7 @@ package kcl.qutong.plagiarism.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 /**
- * This class include some method use to encrypt password in thsi project
+ * This class include some method use to encrypt password in this project
  * @author qutong
  *
  */
