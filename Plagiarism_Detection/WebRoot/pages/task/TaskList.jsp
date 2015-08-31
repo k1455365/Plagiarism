@@ -27,7 +27,7 @@
 function configTrg() {
 	var trgFile = document.getElementById('trgFile').innerHTML;
 	var srcFile = document.getElementById('srcFile').innerHTML;
-	/* alert(srcFile); */
+	alert(srcFile);
 	srcFile = filename(srcFile);
 	trgFile = filename(trgFile);
 	/* alert(srcFile); */
@@ -81,8 +81,8 @@ a.white {
 					<td><s:property value="hits" /></td>
 					<td><s:property value="indel" /></td>
 					<td><s:property value="replacement" /></td>
-					<td><s:property value="srcdir" /></td>
-					<td><s:property value="trgdir" /></td>
+					<td><s:property value="srcdir.split('\\\\/')[srcdir.split('\\\\/').length-1]" /></td>
+					<td><s:property value="trgdir.split('\\\\/')[trgdir.split('\\\\/').length-1]" /></td>
 					<!-- <td id="src"></td>
 					<td id="trg"></td> -->
 					<td><s:date name="tasktime" /></td>

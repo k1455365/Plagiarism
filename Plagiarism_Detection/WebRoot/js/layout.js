@@ -90,14 +90,12 @@ function matchLine(code) {
 }
 //delete useless part of file directory
 function filename(filename){
+	alert(filename);
 	names=filename.split("/");
 	name=names[names.length-1];
 	return name;
 }
 function blackOther(x){
-	//var sum=window.document.getElementsTagName("");
-	//alert(sum.length);回复颜色；总的超链接对数
-	//alert($('a[href*=#]').length);
 	links = document.all.tags("A");
 	total = links.length;
 	for(var i=1;i<total;i++){
