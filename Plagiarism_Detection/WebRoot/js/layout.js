@@ -90,7 +90,6 @@ function matchLine(code) {
 }
 //delete useless part of file directory
 function filename(filename){
-	alert(filename);
 	names=filename.split("/");
 	name=names[names.length-1];
 	return name;

@@ -28,16 +28,16 @@
 		simRecord = sim.split("#");
 		/* alert(simRecord); */
 		block = new Array;
-		for ( var i = 0; i < simRecord.length-1; i++) {
+		for ( var i = 0; i < simRecord.length - 1; i++) {
 			block = simRecord[i].split("&amp;");
 			//get startline and endline
 			/* alert(block); */
 			srcBlock = new Array;
 			srcBlock[i] = block[1];
 			/* alert("here"+srcBlock[i] ); */
-			var blockString = srcBlock[i].toString();//变成字符串
+			var blockString = srcBlock[i].toString();//transfer into string
 			var blockLen = blockString.length;
-			
+
 			blockStr = blockString.split("]");
 			blockString = blockStr[0];
 			blockString = blockString.substring(1, blockLen);//截取1到len-1的字符串
@@ -45,7 +45,7 @@
 			line = blockString.split(",");//用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
-			
+
 			//configure style of source block
 			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
 			for ( var n = (startLine - 1); n < endLine; n++) {
@@ -65,7 +65,7 @@
 		trgFinal = myToString(trg);
 		//-------------------------------deal with the first file-------------------------------
 		var srcCode = document.getElementById('srcRaw').innerHTML;
-	/* 	alert("src file is: "+srcCode); */
+		/* 	alert("src file is: "+srcCode); */
 		src = new Array;
 		src = srcCode.split(" ");
 		src = matchLine(src);
@@ -74,7 +74,7 @@
 		/* alert(sim); */
 		simRecord = sim.split("#");
 		block = new Array;
-		for ( var i = 0; i < simRecord.length-1; i++) {
+		for ( var i = 0; i < simRecord.length - 1; i++) {
 			block = simRecord[i].split("&amp;");
 			// get startline and endline
 			srcBlock = new Array;
@@ -85,16 +85,16 @@
 			blockString = blockStr[0];
 			/* alert(blockLen); */
 			blockString = blockString.substring(1, blockLen);//截取1到len-1的字符串
-			
+
 			line = new Array;
-			
+
 			line = blockString.split(",");// 用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
 			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
 			// configure style of target block
 			for ( var n = (startLine - 1); n < endLine; n++) {
-			/* alert (src[n]); */
+				/* alert (src[n]); */
 				/* src[n] = "<span style=\"color:red\">•</span>" + src[n]; */
 			}
 			m = startLine - 1;
@@ -109,7 +109,7 @@
 		}
 		/* srcFinal = addLinenum(src); *///and line num for code
 		/* alert(src); */
-		srcFinal =myToString(src);
+		srcFinal = myToString(src);
 		/* get basic information of those two file */
 		var simResult = document.getElementById('simResult').innerHTML;
 		var trgFile = document.getElementById('trgFile').innerHTML;
@@ -121,8 +121,8 @@
 		alert(height);
 		height: "+height+"px;*/
 		var width = layout();
-		srcFile=filename(srcFile);
-		trgFile=filename(trgFile);
+		srcFile = filename(srcFile);
+		trgFile = filename(trgFile);
 		var decoratedPage = "<html><head>"
 				+ "<script src=\"/Plagiarism_Detection/js/jquery-1.8.0.js\"></s"+"cript>"
 				+ "<script type=\"text/javascript\" src=\"/Plagiarism_Detection/js/layout.js\"></s"+"cript>"
@@ -173,7 +173,8 @@
 			</pre>
 	</div>
 	<!-- 相似关系获取 -->
-	<div id="simRaw" style="display:none"><s:property value="Textresult" />
+	<div id="simRaw" style="display:none">
+		<s:property value="Textresult" />
 	</div>
 	<!-- srcFileName -->
 	<div id="srcFile" style="display:none">
