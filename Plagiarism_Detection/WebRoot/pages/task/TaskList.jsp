@@ -23,17 +23,6 @@
 <script type="text/javascript"
 	src="/Plagiarism_Detection/js/jscharts_mb.js"></script>
 <script type="text/javascript" src="/Plagiarism_Detection/js/layout.js"></script>
-<script type="text/javascript">
-function configTrg() {
-	var trgFile = document.getElementById('trgFile').innerHTML;
-	var srcFile = document.getElementById('srcFile').innerHTML;
-	alert(srcFile);
-	srcFile = filename(srcFile);
-	trgFile = filename(trgFile);
-	/* alert(srcFile); */
-	document.getElementById('src').innerHTML=srcFile;
-	document.getElementById('trg').innerHTML=trgFile;}
-</script>
 <style type="text/css">
 a.white {
 	color: #ffffff;
@@ -49,7 +38,7 @@ a.white {
 </style>
 </head>
 
-<body onload="configTrg()">
+<body>
 	tasklist page for user:
 	<s:property value="username" />
 	<table  class="table" style="width:98%; min-width:300px;" align="center" cellspacing="1">
