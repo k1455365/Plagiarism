@@ -227,7 +227,6 @@ public class showTaskResult {
 	}
 
 	public String execute() throws Exception {
-		System.out.println("qqqqqqqqqqq"+taskid);
 		task = taskService.findTaskbyID(taskid);
 		setTask(task);
 		taskway = task.getTaskway();
@@ -261,11 +260,11 @@ public class showTaskResult {
 		setTextsim(task.getResult());// score between two pages
 		setTextresult("33");// similiar pairs
 		// return result to corresponding pages
-		if (way == 1) {
+		if (taskway == "text") {
 			return "text";
-		} else if (way == 2) {
+		} else if (taskway == "code") {
 			return "code";
-		} else if (way == 3) {
+		} else if (taskway == "token") {
 			return "token";
 		} else {
 			return "error";
