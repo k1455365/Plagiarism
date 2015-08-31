@@ -230,6 +230,7 @@ public class showTaskResult {
 		task = taskService.findTaskbyID(taskid);
 		setTask(task);
 		taskway = task.getTaskway();
+		System.out.println("taskway: "+taskway);
 		if (taskway == "text") {
 			way = 1;
 		} else if (taskway == "java") {
@@ -245,13 +246,13 @@ public class showTaskResult {
 		/*-------------------------- read files based on the type of files, java or text---------------------------------*/
 		contentReader cr = new contentReader();
 		String Content1 = cr.readerManage(way, fst, srcdir);
-		System.out
-				.println("-------------------------content of first file is: \n"
-						+ Content1);
+//		System.out
+//				.println("-------------------------content of first file is: \n"
+//						+ Content1);
 		String Content2 = cr.readerManage(way, sec, trgdir);
-		System.out
-				.println("-------------------------content of second file is: \n"
-						+ Content2);
+//		System.out
+//				.println("-------------------------content of second file is: \n"
+//						+ Content2);
 		setSrccontent(Content1);// without process currect version hence using
 								// the original content directly
 		setTrgcontent(Content2);
@@ -260,11 +261,11 @@ public class showTaskResult {
 		setTextsim(task.getResult());// score between two pages
 		setTextresult("33");// similiar pairs
 		// return result to corresponding pages
-		if (taskway == "text") {
+		if (taskway.equalsIgnoreCase("text")) {
 			return "text";
-		} else if (taskway == "code") {
+		} else if (taskway.equalsIgnoreCase("code")) {
 			return "code";
-		} else if (taskway == "token") {
+		} else if (taskway.equalsIgnoreCase("token")) {
 			return "token";
 		} else {
 			return "error";
