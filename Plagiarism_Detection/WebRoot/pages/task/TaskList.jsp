@@ -75,7 +75,7 @@ a.white {
 					<!-- <td id="src"></td>
 					<td id="trg"></td> -->
 					<td><s:date name="tasktime" /></td>
-					<td><s:property value="result" /></td>
+					<td><s:property value="score" /></td>
 					<td><a
 						href="/Plagiarism_Detection/ShowTaskResultDetails.action?taskid=${id}">details</a>
 					</td>
