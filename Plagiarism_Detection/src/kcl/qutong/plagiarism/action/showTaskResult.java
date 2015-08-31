@@ -258,8 +258,8 @@ public class showTaskResult {
 		setTrgcontent(Content2);
 		setSrcfile(srcdir);
 		setTrgfile(trgdir);
-		setTextsim(task.getResult());// score between two pages
-		setTextresult("33");// similiar pairs
+		setTextsim("33");// score between two pages
+		setTextresult(task.getResult());// similiar pairs
 		// return result to corresponding pages
 		if (taskway.equalsIgnoreCase("text")) {
 			return "text";
