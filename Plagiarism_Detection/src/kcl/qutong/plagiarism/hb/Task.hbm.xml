@@ -42,6 +42,9 @@
 		<property name="tasktime" type="java.sql.Timestamp">
 			<column name="TASKTIME" length="19" />
 		</property>
+		<property name="score" type="java.lang.String">
+			<column name="SCORE" />
+		</property>
 		<property name="result" type="java.lang.String">
 			<column name="RESULT" />
 		</property>

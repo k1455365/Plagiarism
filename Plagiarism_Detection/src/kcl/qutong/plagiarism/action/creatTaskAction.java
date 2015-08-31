@@ -326,6 +326,7 @@ public class creatTaskAction extends ActionSupport {
 		// store task into database with taskname files directory and result
 		taskBean = new Task();
 		taskBean.setTaskname(taskname);
+		taskBean.setScore(mixResult[0]);
 		taskBean.setResult(mixResult[1]);
 		taskBean.setSrcdir(srcdir);
 		taskBean.setTrgdir(trgdir);

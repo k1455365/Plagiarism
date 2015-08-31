@@ -16,6 +16,7 @@ public class Task {
 	private int replacement;
 	private String tokensize;
 	private String taskway;
+	private String score;
 	private String result;
 	private String srcdir;
 	private String trgdir;
@@ -35,6 +36,12 @@ public class Task {
 	}
 	public void setTaskname(String taskname) {
 		this.taskname = taskname;
+	}
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
 	}
 	public String getResult() {
 		return result;
