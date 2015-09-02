@@ -138,8 +138,6 @@ input {
 						<td width="8" bgcolor="#ed403c">&nbsp;</td>
 						<td valign="top" height="100%" width="100%" border="0"
 							frameborder="0">
-
-
 							<div class="clear" style="height:20px;"></div>
 							<h2 style="width:90%; min-width:200px;">
 								<img src="/Plagiarism_Detection/image/tb.gif" align="middle" /><span>Add
