@@ -39,8 +39,29 @@ a.white {
 </head>
 
 <body>
-	tasklist page for user:
-	<s:property value="username" />
+	<table style="width:100%; min-width:400px;" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="57" background="/Plagiarism_Detection/image/4.png"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="240" height="57" background="/Plagiarism_Detection/image/logo.png">&nbsp;</td>
+          <td>&nbsp;</td>
+          <td width="281" valign="bottom"></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="30" background="/webcmp/images/5.png"> 
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    		<tr>
+    			<td width="0.6%" height="20"></td>
+        	    <td style="color:#FFFFFF;" width="28.9%">
+User now is: </table>
+	<s:property value="username" /> 
+        	    </td>
+        	    <td width="0.5%"></td>
+    		</tr>
+    	</table>
+
 	<table  class="table" style="width:98%; min-width:300px;" align="center" cellspacing="1">
 		<thead>
 			<tr>
