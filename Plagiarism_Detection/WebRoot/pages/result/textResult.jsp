@@ -10,6 +10,7 @@
 	href="/Plagiarism_Detection/css/result.css" />
 <title>resultDetail</title>
 <script type="text/javascript">
+
 	function configTrg() {
 		var flag = document.getElementById('flag').innerHTML;
 		if (flag == 0) {
