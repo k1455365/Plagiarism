@@ -92,7 +92,7 @@
 			line = blockString.split(",");// 用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
-			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
+			alert ("Start line is: "+startLine+" and endline is: "+endLine);
 			// configure style of target block
 			for ( var n = (startLine - 1); n < endLine; n++) {
 				/* alert (src[n]); */
@@ -172,8 +172,7 @@
 			</pre>
 	</div>
 	<!-- 相似关系获取 -->
-	<div id="simRaw" style="display:none">
-		<s:property value="Textresult" />
+	<div id="simRaw" style="display:none"><s:property value="Textresult" />
 	</div>
 	<!-- srcFileName -->
 	<div id="srcFile" style="display:none"><s:property value="srcfile" />
@@ -182,8 +181,7 @@
 	<div id="trgFile" style="display:none"><s:property value="trgfile" />
 	</div>
 	<!-- simResult -->
-	<div id="simResult" style="display:none">
-		<s:property value="textsim" />
+	<div id="simResult" style="display:none"><s:property value="textsim" />
 	</div>
 </body>
 

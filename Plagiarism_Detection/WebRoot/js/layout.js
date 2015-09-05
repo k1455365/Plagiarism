@@ -179,6 +179,7 @@ window.table=a;
 }
 function showTable(){
 	var sim=table;	
+//	alert("showtable");
 	simRecord = sim.split("#");
 	block = new Array;
 	var content="详细相似对记录：\n";
