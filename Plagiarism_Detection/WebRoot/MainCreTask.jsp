@@ -67,13 +67,6 @@ input {
 	opacity: 0;
 	width: 260px
 }
-/* div{
-	display:none;
-	height: 100%;
-	background-color: #F0F4FA;
-	overflow: hidden;
-	overflow-y: scroll;
-	overflow-x: scroll;} */
 </style>
 </head>
 
@@ -108,19 +101,19 @@ input {
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td width="0.6%" height="20"></td>
-									<td style="color:#FFFFFF;" width="28.9%">Welcome User： <s:property
+									<td style="color:#FFFFFF;" width="28.9%">&nbsp; Welcome User： <s:property
 											value="username" /></td>
 									<td width="0.6%" height="20"></td>
-									<td width="70%" align="center" style="color:#FFFFFF;"><a
+									<td width="70%" align="right" ><a 
 										href="/Plagiarism_Detection/task/showTask.action?username=<s:property
-											value="username" />">History</a>
+											value="username" />"><span style="color:#FFFFFF;">History&nbsp;</span></a>
 									</td>
 									<td width="70%" align="right">
 										<table id="DataList1" cellspacing="0" cellpadding="0"
 											style="border-width:0px;height:26px;border-collapse:collapse;">
 											<tr>
-												<td align="center" style="white-space:nowrap;color:#FFFFFF;"><a
-													href="/Plagiarism_Detection/login/logoutaction.action">&nbsp;Logout</a>
+												<td align="center"><a
+													href="/Plagiarism_Detection/login/logoutaction.action"><span style="color:#FFFFFF;">&nbsp;Logout&nbsp;</span></a>
 												</td>
 											</tr>
 										</table>
@@ -213,16 +206,6 @@ input {
 										<td class="column1">Choose 2nd file:</td>
 										<td><input name="sec" type="file" id="doc" /></td>
 									</tr>
-									<!-- <tr class="odd">
-										<td class="column1">Choose 1st file:</td>
-										<td><input name="srcdir" type="file" id="doc" />
-										</td>
-									</tr>
-									<tr>
-										<td class="column1">Choose 2nd file:</td>
-										<td><input name="trgdir" type="file" id="doc" />
-										</td>
-									</tr> -->
 									<tr class="odd">
 										<td colspan="2">
 											<div align="center">
@@ -239,6 +222,7 @@ input {
 						<td width="8" bgcolor="#095584">&nbsp;</td>
 						<td width="8" bgcolor="#095584">&nbsp;</td>
 					</tr>
+							<tfoot>
 				</table>
 			</tr>
 			<!--     downframe -->

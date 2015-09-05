@@ -72,7 +72,7 @@ a.white {
 											style="border-width:0px;height:26px;border-collapse:collapse;">
 											<tr>
 												<td align="center" style="white-space:nowrap;"><a
-													href="/Plagiarism_Detection/login/logoutaction.action">&nbsp;Logout &nbsp;</a>
+													href="/Plagiarism_Detection/login/logoutaction.action"><span style="color:#FFFFFF;">&nbsp;Logout&nbsp;</span></a>
 												</td>
 											</tr>
 										</table></td>
