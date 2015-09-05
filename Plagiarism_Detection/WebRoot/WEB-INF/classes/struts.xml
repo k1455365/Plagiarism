@@ -16,7 +16,7 @@
 			<result name="cancel" type="redirectAction">Welcome</result>
 		</action>
 		<action name="registeraction" class="BeanRegistAction">
-			<result name="success">main_new.jsp</result>
+			<result name="success">MainCreTask.jsp</result>
 			<result name="error">error.jsp</result>
 			<result name="cancel" type="redirectAction">Welcome</result>
 		</action>
@@ -26,6 +26,7 @@
 		<!-- use action jump back to welcome page -->
 		<action name="Welcome">
 			<result name="cancel">welcome.html</result>
+			<result name="success">Plagiarism_Detection/welcome.html</result>
 		</action>
 	</package>
 
