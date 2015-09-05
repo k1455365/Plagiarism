@@ -163,14 +163,12 @@
 	</div>
 	<!-- 源代码获取 -->
 	<div id="srcRaw" style="display:none">
-		<pre>
-				<s:property value="srccontent" />
+		<pre><s:property value="srccontent" />
 			</pre>
 	</div>
 	<!-- 目标代码获取 -->
 	<div id="trgRaw" style="display:none">
-		<pre>
-				<s:property value="trgcontent" />
+		<pre><s:property value="trgcontent" />
 			</pre>
 	</div>
 	<!-- 相似关系获取 -->
@@ -178,12 +176,10 @@
 		<s:property value="Textresult" />
 	</div>
 	<!-- srcFileName -->
-	<div id="srcFile" style="display:none">
-		<s:property value="srcfile" />
+	<div id="srcFile" style="display:none"><s:property value="srcfile" />
 	</div>
 	<!-- trgFileName -->
-	<div id="trgFile" style="display:none">
-		<s:property value="trgfile" />
+	<div id="trgFile" style="display:none"><s:property value="trgfile" />
 	</div>
 	<!-- simResult -->
 	<div id="simResult" style="display:none">

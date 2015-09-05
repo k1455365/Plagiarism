@@ -87,8 +87,8 @@ a.white {
 				<table width="100%" height="100%" border="0" cellspacing="0"
 					cellpadding="0">
 					<tr>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
 						<td valign="top" height="100%" width="100%" border="0"
 							frameborder="0">
 
@@ -154,8 +154,8 @@ a.white {
 		<tfoot>
 	</table>
 							</td>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
 					</tr>
 				</table>
 			</tr>

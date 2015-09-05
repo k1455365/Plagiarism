@@ -63,7 +63,7 @@ input {
 	top: 0;
 	right: 0;
 	height: 24px;
-	filter: alpha(opacity :     0);
+	filter: alpha(opacity :       0);
 	opacity: 0;
 	width: 260px
 }
@@ -78,7 +78,8 @@ input {
 </head>
 
 <body>
-	<s:form method="post" action="creTaskAction" enctype="multipart/form-data">
+	<s:form method="post" action="creTaskAction"
+		enctype="multipart/form-data">
 		<%--     this is the main page welcome 
     2: <s:text name="username"></s:text>
     3: <s:property value="username"/>
@@ -100,8 +101,7 @@ input {
 									<td>&nbsp;</td>
 									<td width="281" valign="bottom"></td>
 								</tr>
-							</table>
-						</td>
+							</table></td>
 					</tr>
 					<tr>
 						<td height="30" background="/Plagiarism_Detection/image/bar.png">
@@ -109,23 +109,26 @@ input {
 								<tr>
 									<td width="0.6%" height="20"></td>
 									<td style="color:#FFFFFF;" width="28.9%">Welcome User： <s:property
-											value="username" />
-									</td>
+											value="username" /></td>
 									<td width="0.6%" height="20"></td>
-									<td width="70%" align="center"><a href="/Plagiarism_Detection/task/showTask.action?username=<s:property
-											value="username" />">History</a></td>
+									<td width="70%" align="center" style="color:#FFFFFF;"><a
+										href="/Plagiarism_Detection/task/showTask.action?username=<s:property
+											value="username" />">History</a>
+									</td>
 									<td width="70%" align="right">
 										<table id="DataList1" cellspacing="0" cellpadding="0"
 											style="border-width:0px;height:26px;border-collapse:collapse;">
 											<tr>
-												<td align="center" style="white-space:nowrap;"><a
+												<td align="center" style="white-space:nowrap;color:#FFFFFF;"><a
 													href="/Plagiarism_Detection/login/logoutaction.action">&nbsp;Logout</a>
 												</td>
 											</tr>
-										</table></td>
+										</table>
+									</td>
 									<td width="0.5%"></td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 				</table>
 			</tr>
@@ -134,8 +137,8 @@ input {
 				<table width="100%" height="100%" border="0" cellspacing="0"
 					cellpadding="0">
 					<tr>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
 						<td valign="top" height="100%" width="100%" border="0"
 							frameborder="0">
 							<div class="clear" style="height:20px;"></div>
@@ -145,14 +148,12 @@ input {
 							</h2>
 							<table>
 								<!--     basic information -->
-								>
 								<table class="table form" style="width:90%; min-width:300px;"
 									align="center" cellspacing="1">
 									<tr class="odd">
 										<td class="column1">Task Name:</td>
 										<td><input type="text" class="text" name="taskname"
-											id="taskname" size="40" />
-										</td>
+											id="taskname" size="40" /></td>
 									</tr>
 									<tr>
 										<td class="column1">File Type:</td>
@@ -160,14 +161,16 @@ input {
 													value="1">text</option>
 												<option value="2">java</option>
 												<option value="3">character</option>
-										</select></td>
+										</select>
+										</td>
 									</tr>
 									<tr class="odd">
 										<td class="column1">Token Size:</td>
 										<td><select tabindex="普通" name="tokensize"><option
 													value="1">word</option>
 												<option value="2">line</option>
-										</select></td>
+										</select>
+										</td>
 									</tr>
 									<tr>
 										<td class="column1">Algorithm:</td>
@@ -175,47 +178,42 @@ input {
 													value="1">Basic Smith-Waterman</option>
 												<option value="2">Smith-Waterman with cut-off</option>
 												<option value="3">Smith-Waterman without verlap</option>
-										</select></td>
+										</select>
+										</td>
 									</tr>
 									<tr class="odd">
 										<td class="column1">Threshold:</td>
 										<td><input type="text" class="text" name="threshold"
-											id="threshold" size="5" />
-										</td>
+											id="threshold" size="5" /></td>
 									</tr>
-									<tr >
+									<tr>
 										<td class="column1">score of hits</td>
-										<td><input type="text" class="text" name="hits"
-											id="hits" size="2" />
-										</td>
+										<td><input type="text" class="text" name="hits" id="hits"
+											size="2" /></td>
 									</tr>
-									<tr >
+									<tr>
 										<td class="column1">score of indel</td>
 										<td><input type="text" class="text" name="indel"
-											id="indel" size="2" />
-										</td>
+											id="indel" size="2" /></td>
 									</tr>
-									<tr >
+									<tr>
 										<td class="column1">score of replacement</td>
 										<td><input type="text" class="text" name="insert"
-											id="insert" size="2" />
-										</td>
+											id="insert" size="2" /></td>
 									</tr>
 								</table>
 								<!--     upload files -->
 								<table class="table form" style="width:90%; min-width:300px;"
 									align="center" cellspacing="1">
- 									<tr class="odd">
+									<tr class="odd">
 										<td class="column1">Choose 1st file:</td>
-										<td><input name="fst" type="file" id="doc" />
-										</td>
+										<td><input name="fst" type="file" id="doc" /></td>
 									</tr>
 									<tr>
 										<td class="column1">Choose 2nd file:</td>
-										<td><input name="sec" type="file" id="doc" />
-										</td>
+										<td><input name="sec" type="file" id="doc" /></td>
 									</tr>
-																		<!-- <tr class="odd">
+									<!-- <tr class="odd">
 										<td class="column1">Choose 1st file:</td>
 										<td><input name="srcdir" type="file" id="doc" />
 										</td>
@@ -232,12 +230,14 @@ input {
 													onclick="javascript:history.go(-1)" />&nbsp;&nbsp;&nbsp;
 												<!-- <input id="formsubmit" type="button" class="button" value="Start Analyse"/>  -->
 												<s:submit></s:submit>
-											</div></td>
+											</div>
+										</td>
 									</tr>
 								</table>
-							</table></td>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
-						<td width="8" bgcolor="#ed403c">&nbsp;</td>
+							</table>
+						</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
+						<td width="8" bgcolor="#095584">&nbsp;</td>
 					</tr>
 				</table>
 			</tr>

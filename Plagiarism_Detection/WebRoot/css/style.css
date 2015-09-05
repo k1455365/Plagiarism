@@ -20,14 +20,6 @@ s:submit.button { height: 24px; background:#fff url(../image/btn-bg.gif) repeat-
 textarea,
 input.text { border:1px solid #72a1bd; height:19px; }
 
-/*查询工具条*/
-.SearchBar           {  height:28px; padding-top:3px; }
-.SearchBar span      { margin-left:5px; }
-.ListTitle           { background:#353c44;  height:24px; color:#e1e2e3; margin:3px 0; padding-top:3px; padding-left:5px; }
-.ListTitle a         { color:#e1e2e3; margin-right:8px; }
-.ListTitle div span  { margin-right:8px; }
-.ListTitle div img   { margin-right:3px; }
-
 /*列表*/
 .table           { width:100%; border:1px solid #a8c7ce; border-collapse:collapse; color:#344b50; line-height:20px; background:#fff;  }
 .table td        { background:#fff; border:1px solid #a8c7ce; text-align:center; word-wrap:break-word; word-break:break-all; font-size:12px; white-space:nowrap; }						
@@ -36,7 +28,7 @@ input.text { border:1px solid #72a1bd; height:19px; }
 .TableFoot          { padding:3px; color:#344b50; }
 
 /*表单标题*/
-h2                    { background-image: url(/webcmp/images/5.png); padding:3px 0px 5px 0px; width:600p;margin:3px auto 3px auto; x; }
+h2                    { background-image: url(/Plagiarism_Detection/image/5.png); padding:3px 0px 5px 0px; width:600p;margin:3px auto 3px auto; x; }
 h2 img,
 h2 span               { padding-left:5px; }
 h1                    { padding:3px 0px 3px 0px; width:600p;margin:3px auto 3px auto; x; }
@@ -50,19 +42,5 @@ h1 span               { padding-left:5px; }
 /*fieldset*/
 .fieldset { border:0px solid #a8c7ce; padding:5px; margin:3px; }
 .fieldset legend { font-weight:800; margin-left:8px; }
-
-/*分页*/
-.pagination a       { border:1px solid #72a1bd; padding:2px 8px 0px 8px; color:#369; margin-right:5px; background:#fff url(../images/btn-bg.gif) repeat-x; }
-.pagination a:hover { background:#fff; text-decoration:none; }
-
-/*jscharts*/
-.divdesc    { float: left; height:150px; background-image: url(../images/detail_middle.gif); width: 50%; min-width: 50%; border: 0px;  alpha:50%;}
-.detaildesc { margin: 5px; 	color: #344b50;	font-size: 12px; }
-.divgraph   { background-image: url(../images/detail_middle.gif); float:left; height:150px; width: 50%;  min-width: 50%; }
-.divtitle   { background-image: url(../images/detail_middle.gif); float:left; height:150px; width: 50%;  min-width: 50%; }
-
-/*标签*/
-.tabs ul li           { float:left; width:155px; height:30px; line-height:30px; display:block; text-align:center; background:url(../images/fenlan2.gif) no-repeat; }
-.tabs ul li#selected  { background:#ffffff url(../images/fenlan1.gif) no-repeat; }
 
 .clear { clear:both; }
