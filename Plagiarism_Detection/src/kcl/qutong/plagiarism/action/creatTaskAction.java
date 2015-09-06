@@ -324,7 +324,7 @@ public class creatTaskAction extends ActionSupport {
 		long startTime=System.currentTimeMillis();
 		mixResult = cm.compareTool(Content1, Content2, taskway, algorithm,threshold,hits,indel,insert);
 		long endTime=System.currentTimeMillis();
-		System.out.println("*************************Runtime ： "+(endTime-startTime)+"ms*************************");   
+		System.out.println("*************************Runtime : "+(endTime-startTime)+"ms*************************");   
 		// store task into database with taskname files directory and result
 		taskBean = new Task();
 		taskBean.setTaskname(taskname);
