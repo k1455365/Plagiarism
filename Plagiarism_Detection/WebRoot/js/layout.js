@@ -181,6 +181,7 @@ function showTable(){
 	var sim=table;	
 //	alert("showtable");
 	simRecord = sim.split("#");
+	alert(sim);
 	block = new Array;
 	var content="详细相似对记录：\n";
 	for ( var i = 1; i < simRecord.length; i++) {
