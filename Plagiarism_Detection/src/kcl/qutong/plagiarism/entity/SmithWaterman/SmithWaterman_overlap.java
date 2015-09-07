@@ -357,8 +357,8 @@ public class SmithWaterman_overlap {
 			start = candidateSet.get(2 * n);
 			end = candidateSet.get(2 * n + 1);
 			System.out.println(pairs);
-			pairs = pairs + "[" + (start.getX()-1) + "," + (end.getX()-1) + "]&["
-					+ (start.getY()-1) + "," + (end.getY()-1) + "]#";
+			pairs = pairs + "[" + (start.getX()) + "," + (end.getX()) + "]&["
+					+ (start.getY()) + "," + (end.getY()) + "]#";
 		}
 
 		System.out.println("final result is : " + pairs);

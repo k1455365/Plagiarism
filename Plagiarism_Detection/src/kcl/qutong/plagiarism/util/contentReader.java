@@ -53,6 +53,7 @@ public class contentReader {
 	public String readerManage(int filetype, File file, String path)
 			throws Exception {
 		// 1:text; 2:java
+//		System.out.println("read in is: "+filetype);
 		switch (filetype) {
 		case 2:
 			content = buildin(file);
@@ -74,7 +75,7 @@ public class contentReader {
 	 * @throws IOException
 	 */
 	public String buildin(File file) throws IOException {
-
+		System.out.println("enter buildin");
 		FileReader freader = new FileReader(file);
 		BufferedReader breader = new BufferedReader(freader);
 		StringBuilder sb = new StringBuilder();

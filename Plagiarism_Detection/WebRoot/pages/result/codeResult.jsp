@@ -22,7 +22,7 @@
 		trg = matchLine(trg);
 		sim = new Array;
 		var sim = document.getElementById('simRaw').innerHTML;
-		alert("sim"+sim);
+		/* alert("sim"+sim); */
 		simRecord = sim.split("#");
 		block = new Array;
 		for ( var i = 0; i < simRecord.length-1; i++) {
@@ -142,38 +142,31 @@
 <body onload="configTrg()">
 	&nbsp;	
 	<!-- flag获取 -->
-			<div id="flag" style="display:none">
-				<s:property value="taskway" />
+			<div id="flag" style="display:none"><s:property value="taskway" />
 		</div>
 	<!-- 源代码获取 -->
 
-		<div id="srcRaw" style="display:none">
-			<pre><s:property value="srccontent" />
+		<div id="srcRaw" style="display:none"><pre><s:property value="srccontent" />
 			</pre>
 		</div>
 		<!-- 目标代码获取 -->
-		<div id="trgRaw" style="display:none">
-			<pre><s:property value="trgcontent" />
+		<div id="trgRaw" style="display:none"><pre><s:property value="trgcontent" />
 			</pre>
 		</div>
 		<!-- 相似关系获取 -->
 		<div id="simRaw" style="display:none"><s:property value="Textresult" />
 		</div>
 		<!-- 相似关系获取record -->
-		<div id="recordRaw" style="display:none">
-			<s:property value="simlist" />
+		<div id="recordRaw" style="display:none"><s:property value="simlist" />
 		</div>
 		<!-- srcFile -->
-		<div id="srcFile" style="display:none">
-			<s:property value="srcfile" />
+		<div id="srcFile" style="display:none"><s:property value="srcfile" />
 		</div>
 		<!-- trgFile -->
-		<div id="trgFile" style="display:none">
-			<s:property value="trgfile" />
+		<div id="trgFile" style="display:none"><s:property value="trgfile" />
 		</div>
 		<!-- simResult -->
-		<div id="simResult" style="display:none">
-			<s:property value="textsim" />
+		<div id="simResult" style="display:none"><s:property value="textsim" />
 		</div>
 </body>
 

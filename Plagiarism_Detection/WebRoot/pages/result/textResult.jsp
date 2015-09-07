@@ -92,7 +92,7 @@
 			line = blockString.split(",");// 用，分成两个；第一个是startline第二个是endline
 			startLine = line[0];
 			endLine = line[1];
-			alert ("Start line is: "+startLine+" and endline is: "+endLine);
+			/* alert ("Start line is: "+startLine+" and endline is: "+endLine); */
 			// configure style of target block
 			for ( var n = (startLine - 1); n < endLine; n++) {
 				/* alert (src[n]); */

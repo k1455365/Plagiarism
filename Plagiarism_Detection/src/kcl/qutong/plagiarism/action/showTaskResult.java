@@ -231,9 +231,9 @@ public class showTaskResult {
 		setTask(task);
 		taskway = task.getTaskway();
 		System.out.println("taskway: "+taskway);
-		if (taskway == "text") {
+		if (taskway.equalsIgnoreCase("text")) {
 			way = 1;
-		} else if (taskway == "java") {
+		} else if (taskway.equalsIgnoreCase("java")) {
 			way = 2;
 		} else {
 			way = 3;
@@ -263,9 +263,9 @@ public class showTaskResult {
 		// return result to corresponding pages
 		if (taskway.equalsIgnoreCase("text")) {
 			return "text";
-		} else if (taskway.equalsIgnoreCase("code")) {
+		} else if (taskway.equalsIgnoreCase("java")) {
 			return "code";
-		} else if (taskway.equalsIgnoreCase("token")) {
+		} else if (taskway.equalsIgnoreCase("character")) {
 			return "token";
 		} else {
 			return "error";
